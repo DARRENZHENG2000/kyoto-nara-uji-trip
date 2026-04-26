@@ -801,43 +801,6 @@ footer strong {
   .transport-table td, .transport-table th { padding: 0.6rem 0.5rem; }
 }
 </style>
-
-<style>
-.spot-img { 
-    background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%) !important;
-}
-.spot-img-wrap {
-    background: linear-gradient(135deg, #F5F0E8 0%, #E8E0D0 50%, #D5CAB8 100%) !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.spot-img-wrap::before {
-    content: "⛩️";
-    font-size: 3rem;
-    opacity: 0.15;
-    position: absolute;
-}
-.spot-img {
-    opacity: 0;
-}
-.spot-img[src*="unsplash"] {
-    opacity: 1;
-}
-</style>
-
-<style>
-.spot-img-wrap {
-    background: #E8E0D0 !important;
-}
-.spot-img {
-    object-fit: cover;
-    opacity: 1 !important;
-}
-.spot-img[src] {
-    display: block;
-}
-</style>
 </head>
 <body>
 
@@ -1075,9 +1038,9 @@ footer strong {
     </div>
 
     <div class="spots-grid reveal">
-      <a class="spot-card" href="maps://?q=東福寺,京都市東山区" target="_blank">
+      <a class="spot-card" data-lat="34.976" data-lng="135.7723" data-name="Tofuku-ji Temple Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Tofukuji_hojo_garden.JPG/1280px-Tofukuji_hojo_garden.JPG" alt="东福寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>⛩️</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1090,9 +1053,9 @@ footer strong {
           </div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=三十三間堂,京都市東山区" target="_blank">
+      <a class="spot-card" data-lat="34.9883" data-lng="135.7736" data-name="Sanjusangendo Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Sanjusangendo_garan.jpg/1280px-Sanjusangendo_garan.jpg" alt="三十三间堂" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏯</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1105,9 +1068,9 @@ footer strong {
           </div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=京都国立博物館" target="_blank">
+      <a class="spot-card" data-lat="34.9878" data-lng="135.7739" data-name="Kyoto National Museum" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Kyoto_national_museum01s3200.jpg/1280px-Kyoto_national_museum01s3200.jpg" alt="京都国立博物馆" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏛️</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1120,9 +1083,9 @@ footer strong {
           </div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=高台寺,京都市東山区" target="_blank">
+      <a class="spot-card" data-lat="34.9979" data-lng="135.7823" data-name="Kodai-ji Temple Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Kodaiji_Temple_Kyoto.jpg/1280px-Kodaiji_Temple_Kyoto.jpg" alt="高台寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏯</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1135,9 +1098,9 @@ footer strong {
           </div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=花見小路,京都市東山区祇園" target="_blank">
+      <a class="spot-card" data-lat="35.0032" data-lng="135.7756" data-name="Hanamikoji Gion Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Gion_Hanamikoji.jpg/800px-Gion_Hanamikoji.jpg" alt="花见小路" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏮</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1150,7 +1113,7 @@ footer strong {
           </div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=AGIYAO 魚料理 京都" target="_blank">
+      <a class="spot-card" data-lat="34.9953" data-lng="135.7611" data-name="Sakana Ryori AGIYAO Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
           <div class="spot-img-placeholder">🐟</div>
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
@@ -1246,9 +1209,9 @@ footer strong {
     </div>
 
     <div class="spots-grid reveal">
-      <a class="spot-card" href="maps://?q=西芳寺,京都市西京区" target="_blank">
+      <a class="spot-card" data-lat="34.995" data-lng="135.6789" data-name="Saihoji Koke-dera Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Saihoji_moss_garden.jpg/1280px-Saihoji_moss_garden.jpg" alt="西芳寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🪷</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1258,9 +1221,9 @@ footer strong {
           <div class="spot-meta"><span class="spot-ticket">R200247</span><span class="spot-world">✅ 世界遗产</span></div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=嵐山竹林,京都市右京区" target="_blank">
+      <a class="spot-card" data-lat="35.017" data-lng="135.6717" data-name="Arashiyama Bamboo Grove Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bamboo_groves_of_Sagano.jpg/800px-Bamboo_groves_of_Sagano.jpg" alt="嵯峨野竹林" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🎋</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1270,9 +1233,9 @@ footer strong {
           <div class="spot-meta"><span class="spot-ticket">免费</span><span class="spot-world">24小时开放</span></div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=天龍寺,京都市右京区嵐山" target="_blank">
+      <a class="spot-card" data-lat="35.017" data-lng="135.6748" data-name="Tenryu-ji Temple Arashiyama Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Tenryuji_from_Hojoike.jpg/1280px-Tenryuji_from_Hojoike.jpg" alt="天龙寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>⛩️</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1282,9 +1245,9 @@ footer strong {
           <div class="spot-meta"><span class="spot-ticket">¥500</span><span class="spot-world">✅ 世界遗产</span></div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=貴船神社,京都市左京区" target="_blank">
+      <a class="spot-card" data-lat="35.1163" data-lng="135.7602" data-name="Kifune Shrine Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Kibune_Shrine_lanterns.jpg/800px-Kibune_Shrine_lanterns.jpg" alt="贵船神社" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>⛩️</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1294,9 +1257,9 @@ footer strong {
           <div class="spot-meta"><span class="spot-ticket">免费</span><span class="spot-world">结缘著名</span></div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=料理旅館ひろ文,京都市左京区鞍馬貴船町" target="_blank">
+      <a class="spot-card" data-lat="35.1163" data-lng="135.7589" data-name="Ryori Ryokan Hirobun Kifune Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Kibune_kawadoko.jpg/1280px-Kibune_kawadoko.jpg" alt="贵船川床" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🍱</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1403,9 +1366,9 @@ footer strong {
     </div>
 
     <div class="spots-grid reveal">
-      <a class="spot-card" href="maps://?q=平等院,宇治市" target="_blank">
+      <a class="spot-card" data-lat="34.8894" data-lng="135.8077" data-name="Byodoin Phoenix Hall Uji" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Byodo-in_in_Uji.jpg/1280px-Byodo-in_in_Uji.jpg" alt="平等院" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🌸</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1415,9 +1378,9 @@ footer strong {
           <div class="spot-meta"><span class="spot-ticket">¥600+¥300</span><span class="spot-world">✅ 世界遗产</span></div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=金閣寺,京都市北区" target="_blank">
+      <a class="spot-card" data-lat="35.0394" data-lng="135.7292" data-name="Kinkaku-ji Golden Pavilion Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Kinkakuji-in-Kyoto-2010-wideshot.jpg/1280px-Kinkakuji-in-Kyoto-2010-wideshot.jpg" alt="金阁寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>✨</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1427,9 +1390,9 @@ footer strong {
           <div class="spot-meta"><span class="spot-ticket">¥500</span><span class="spot-world">✅ 世界遗产</span></div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=龍安寺,京都市右京区" target="_blank">
+      <a class="spot-card" data-lat="35.0346" data-lng="135.7183" data-name="Ryoan-ji Temple Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Ryoan-ji_Kyoto_Zen_garden_adjusted.jpg/1280px-Ryoan-ji_Kyoto_Zen_garden_adjusted.jpg" alt="龙安寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🪨</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1439,9 +1402,9 @@ footer strong {
           <div class="spot-meta"><span class="spot-ticket">¥600</span><span class="spot-world">✅ 世界遗产</span></div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=仁和寺,京都市右京区" target="_blank">
+      <a class="spot-card" data-lat="35.0302" data-lng="135.7144" data-name="Ninna-ji Temple Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Ninnaji06s3200.jpg/1280px-Ninnaji06s3200.jpg" alt="仁和寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏯</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1451,9 +1414,9 @@ footer strong {
           <div class="spot-meta"><span class="spot-ticket">¥800</span><span class="spot-world">✅ 世界遗产</span></div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=元離宮二条城,京都市中京区" target="_blank">
+      <a class="spot-card" data-lat="35.0142" data-lng="135.7481" data-name="Nijo Castle Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Ninomaru_Palace_Nijo_Castle_Kyoto_Japan.jpg/1280px-Ninomaru_Palace_Nijo_Castle_Kyoto_Japan.jpg" alt="二条城" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏯</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1463,7 +1426,7 @@ footer strong {
           <div class="spot-meta"><span class="spot-ticket">¥1,000</span><span class="spot-world">✅ 世界遗产</span></div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=京料理鶴清,京都市下京区" target="_blank">
+      <a class="spot-card" data-lat="35.0038" data-lng="135.7673" data-name="Kyoryori Tsuruse Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
           <div class="spot-img-placeholder">🌊</div>
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
@@ -1563,9 +1526,9 @@ footer strong {
     </div>
 
     <div class="spots-grid reveal">
-      <a class="spot-card" href="maps://?q=興福寺,奈良市" target="_blank">
+      <a class="spot-card" data-lat="34.6816" data-lng="135.8282" data-name="Kofuku-ji Temple Nara" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Kofukuji_Pagoda_Nara_Japan.jpg/800px-Kofukuji_Pagoda_Nara_Japan.jpg" alt="兴福寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏯</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1575,9 +1538,9 @@ footer strong {
           <div class="spot-meta"><span class="spot-ticket">¥700+¥300</span><span class="spot-world">✅ 世界遗产</span></div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=奈良国立博物館" target="_blank">
+      <a class="spot-card" data-lat="34.6839" data-lng="135.8398" data-name="Nara National Museum" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Nara_National_Museum_01.jpg/1280px-Nara_National_Museum_01.jpg" alt="奈良国立博物馆" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏛️</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1587,9 +1550,9 @@ footer strong {
           <div class="spot-meta"><span class="spot-ticket">¥700</span><span class="spot-world">1895年创立</span></div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=東大寺,奈良市" target="_blank">
+      <a class="spot-card" data-lat="34.6887" data-lng="135.8397" data-name="Todai-ji Temple Nara" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Todaiji_Cathedral.jpg/1280px-Todaiji_Cathedral.jpg" alt="东大寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>⛩️</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1599,9 +1562,9 @@ footer strong {
           <div class="spot-meta"><span class="spot-ticket">¥800</span><span class="spot-world">✅ 世界遗产</span></div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=春日大社,奈良市" target="_blank">
+      <a class="spot-card" data-lat="34.6815" data-lng="135.8448" data-name="Kasuga Taisha Shrine Nara" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Kasugataisha_Shrine.jpg/800px-Kasugataisha_Shrine.jpg" alt="春日大社" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>⛩️</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1611,9 +1574,9 @@ footer strong {
           <div class="spot-meta"><span class="spot-ticket">¥500</span><span class="spot-world">✅ 世界遗产</span></div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=祇園甲部歌舞練場" target="_blank">
+      <a class="spot-card" data-lat="35.0032" data-lng="135.775" data-name="Gion Corner Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Gion_matsuri_2009.jpg/1280px-Gion_matsuri_2009.jpg" alt="祇园角" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🎭</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1700,9 +1663,9 @@ footer strong {
     </div>
 
     <div class="spots-grid reveal">
-      <a class="spot-card" href="maps://?q=南禅寺,京都市左京区" target="_blank">
+      <a class="spot-card" data-lat="35.0115" data-lng="135.793" data-name="Nanzen-ji Temple Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Nanzenji_suirokaku.JPG/1280px-Nanzenji_suirokaku.JPG" alt="南禅寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>⛩️</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1712,9 +1675,9 @@ footer strong {
           <div class="spot-meta"><span class="spot-ticket">方丈¥600</span><span class="spot-world">临济宗大本山</span></div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=哲学の道,京都市左京区" target="_blank">
+      <a class="spot-card" data-lat="35.0224" data-lng="135.7956" data-name="Philosopher's Walk Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Philosophers_Walk_Kyoto.jpg/1280px-Philosophers_Walk_Kyoto.jpg" alt="哲学之道" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🚶</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1724,9 +1687,9 @@ footer strong {
           <div class="spot-meta"><span class="spot-ticket">免费</span><span class="spot-world">5月新绿盎然</span></div>
         </div>
       </a>
-      <a class="spot-card" href="maps://?q=銀閣寺,京都市左京区" target="_blank">
+      <a class="spot-card" data-lat="35.0271" data-lng="135.7985" data-name="Ginkaku-ji Silver Pavilion Kyoto" href="#" target="_blank">
         <div class="spot-img-wrap">
-          <div class="spot-img-placeholder" style="background: linear-gradient(135deg, #1a1410 0%, #2c2420 50%, #4a5240 100%); display:flex; align-items:center; justify-content:center;"><span style="font-size:3rem;opacity:0.3;">⛩️</span></div>
+          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Ginkaku-ji_temple.jpg/1280px-Ginkaku-ji_temple.jpg" alt="银阁寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🌙</div>'">
           <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
         </div>
         <div class="spot-body">
@@ -1950,22 +1913,26 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
 });
 
 // Map link detection — use Apple Maps on iOS, Google Maps otherwise
-document.querySelectorAll('a[href^="maps://"]').forEach(link => {
-  const query = link.href.replace('maps://?q=', '');
-  const encoded = encodeURIComponent(query.replace(/\+/g, ' '));
-  
+// 地图导航：使用精确GPS坐标，确保跳转到日本正确地点
+document.querySelectorAll('a[data-lat]').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
+    const lat = link.dataset.lat;
+    const lng = link.dataset.lng;
+    const name = encodeURIComponent(link.dataset.name);
     const ua = navigator.userAgent;
     const isIOS = /iPad|iPhone|iPod/.test(ua);
     const isAndroid = /Android/.test(ua);
-    
+
     if (isIOS) {
-      window.location.href = `maps://?q=${encoded}`;
+      // Apple Maps：用坐标+名称，精准定位
+      window.location.href = `maps://?ll=${lat},${lng}&q=${name}`;
     } else if (isAndroid) {
-      window.location.href = `geo:0,0?q=${encoded}`;
+      // Google Maps：用坐标+名称
+      window.location.href = `geo:${lat},${lng}?q=${lat},${lng}(${name})`;
     } else {
-      window.open(`https://maps.apple.com/?q=${encoded}`, '_blank');
+      // 桌面：打开Google Maps坐标链接
+      window.open(`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`, '_blank');
     }
   });
 });
