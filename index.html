@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>京都·奈良·宇治 行程 | 2026年5月</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Kaushan+Script&display=swap" rel="stylesheet">
+<style>
+:root {
+    --京都红: #c41e3a;
+    --苔绿: #4a6741;
+    --金箔: #d4af37;
+    --藤紫: #7b5aa6;
+    --和纸白: #f8f6f0;
+    --墨黑: #1a1a1a;
+    --深墨: #2d2d2d;
+    --柔灰: #8a8a8a;
+    --淡灰: #e8e6df;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--和纸白);
+    color: var(--墨黑);
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+/* === 背景纹理 === */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af3715' fill-opacity='0.3'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-24L17 12v-2h2v20l2-1 1 1 8-8 8 8-1 1-2 1v-20h2v2l-10 10z'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* === 头部 === */
+header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    position: relative;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--京都红), transparent);
+}
+
+.logo {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 14px;
+    color: var(--柔灰);
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--墨黑);
+    margin-bottom: 12px;
+    letter-spacing: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: var(--柔灰);
+    letter-spacing: 2px;
+}
+
+.date-badge {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 8px 24px;
+    border: 1px solid var(--金箔);
+    font-size: 12px;
+    color: var(--金箔);
+    letter-spacing: 2px;
+}
+
+/* === 导航 === */
+nav {
+    position: sticky;
+    top: 0;
+    background: var(--和纸白)dd;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    border-bottom: 1px solid var(--淡灰);
+    padding: 0 20px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    list-style: none;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+nav li {
+    flex: 1;
+    text-align: center;
+}
+
+nav a {
+    display: block;
+    padding: 16px 0;
+    color: var(--柔灰);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: all .3s;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--京都红);
+    transition: all .3s;
+    transform: translateX(-50%);
+}
+
+nav a:hover, nav a.active {
+    color: var(--墨黑);
+}
+
+nav a:hover::after, nav a.active::after {
+    width: 40px;
+}
+
+/* === 主内容 === */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+section {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--��黑);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--淡灰);
+    letter-spacing: 4px;
+}
+
+/* === 行程卡片 === */
+.day-card {
+    background: #fff;
+    border: 1px solid var(--淡灰);
+    margin-bottom: 24px;
+    transition: all .3s;
+}
+
+.day-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+}
+
+.day-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--淡灰);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.day-num {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 14px;
+    color: var(--柔灰);
+}
+
+.day-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.day-date {
+    font-size: 12px;
+    color: var(--柔灰);
+}
+
+/* === 行程项 === */
+.timeline {
+    padding: 0;
+}
+
+.timeline-item {
+    display: flex;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--淡灰);
+    transition: background .2s;
+}
+
+.timeline-item:last-child {
+    border-bottom: none;
+}
+
+.timeline-item:hover {
+    background: #fafaf8;
+}
+
+.timeline-item.booked {
+    border-left: 3px solid var(--金箔);
+}
+
+.time {
+    min-width: 60px;
+    font-size: 12px;
+    color: var(--柔灰);
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.content {
+    flex: 1;
+}
+
+.place-name {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.place-name .icon {
+    font-size: 14px;
+}
+
+.place-note {
+    font-size: 12px;
+    color: var(--柔灰);
+    margin-top: 4px;
+}
+
+.place-tags {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+}
+
+.tag.heritage {
+    background: var(--金箔);
+    color: #fff;
+}
+
+.tag.booked {
+    background: var(--京都红);
+    color: #fff;
+}
+
+.tag.free {
+    background: var(--淡灰);
+    color: var(--深墨);
+}
+
+/* === 地图按钮 === */
+.map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--京都红);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid var(--京都红);
+    border-radius: 2px;
+    margin-top: 8px;
+    transition: all .2s;
+}
+
+.map-link:hover {
+    background: var(--京都红);
+    color: #fff;
+}
+
+/* === 餐厅卡片 === */
+.restaurant-card {
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #fafaf8 0%, #f5f4f0 100%);
+    border: 1px solid var(--淡灰);
+    margin-bottom: 16px;
+}
+
+.restaurant-name {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.restaurant-info {
+    font-size: 13px;
+    color: var(--柔灰);
+}
+
+.restaurant-price {
+    font-size: 14px;
+    color: var(--金箔);
+    margin-top: 8px;
+}
+
+/* === 信息卡 === */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.info-card {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid var(--淡灰);
+    text-align: center;
+}
+
+.info-card .label {
+    font-size: 11px;
+    color: var(--柔灰);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.info-card .value {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.info-card.booked .value {
+    color: var(--金箔);
+}
+
+/* === 页脚 === */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid var(--淡灰);
+    font-size: 12px;
+    color: var(--柔灰);
+}
+
+/* === 响应式 === */
+@media (max-width: 600px) {
+    h1 { font-size: 28px; letter-spacing: 4px; }
+    .timeline-item { flex-direction: column; }
+    .time { margin-bottom: 4px; }
+    nav ul { flex-wrap: wrap; }
+    nav li { flex: 0 0 50%; }
+}
+
+/* === 动画 === */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.day-card {
+    animation: fadeIn .5s ease forwards;
+}
+
+.day-card:nth-child(2) { animation-delay: .1s; }
+.day-card:nth-child(3) { animation-delay: .2s; }
+.day-card:nth-child(4) { animation-delay: .3s; }
+.day-card:nth-child(5) { animation-delay: .4s; }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">KYOTO TRIP</div>
+    <h1>京都·奈良·宇治</h1>
+    <div class="subtitle">世界遗产 · 传统文化 · 精致餐饮</div>
+    <div class="date-badge">2026.05.01 — 05.05</div>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#day1">Day 1</a></li>
+        <li><a href="#day2">Day 2</a></li>
+        <li><a href="#day3">Day 3</a></li>
+        <li><a href="#day4">Day 4</a></li>
+        <li><a href="#day5">Day 5</a></li>
+    </ul>
+</nav>
+
+<main>
+
+<!-- 预订总览 -->
+<section>
+    <h2 class="section-title">📋 预订总览</h2>
+    <div class="info-grid">
+        <div class="info-card booked">
+            <div class="label">✈️ 去程</div>
+            <div class="value">HX616 已确认</div>
+        </div>
+        <div class="info-card booked">
+            <div class="label">🏨 酒店</div>
+            <div class="value">2家已确认</div>
+        </div>
+        <div class="info-card booked">
+            <div class="label">🍽️ 餐厅</div>
+            <div class="value">2家已付款</div>
+        </div>
+        <div class="info-card">
+            <div class="label">🪷 西芳寺</div>
+            <div class="value">已预约 R200247</div>
+        </div>
+    </div>
+</section>
+
+<!-- Day 1 -->
+<section id="day1">
+    <h2 class="section-title">Day 1 · 5月1日（星期五）</h2>
+    
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-num">DAY 01</div>
+            <div class="day-date">抵达京都 → 东山</div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time">02:50</div>
+                <div class="content">
+                    <div class="place-name">✈️ 香港T1出发 <span class="icon">HX616</span></div>
+                    <div class="place-note">关西机场T1抵达 → 07:55</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">08:30</div>
+                <div class="content">
+                    <div class="place-name">🚃 HARUKA 特急</div>
+                    <div class="place-note">关西机场 → 京都站 · WEST QR</div>
+                    <a class="map-link" href="https://maps.apple.com/?q=京都駅">📍 地图</a>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">10:30</div>
+                <div class="content">
+                    <div class="place-name">⛩️ <a href="https://maps.apple.com/?q=東福寺">东福寺</a></div>
+                    <div class="place-note">四重枯山水方丈庭园 ·  ¥500</div>
+                    <div class="place-tags"><span class="tag heritage">🎯 世界遗产</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">11:30</div>
+                <div class="content">
+                    <div class="place-name">🏯 <a href="https://maps.apple.com/?q=三十三間堂">三十三间堂</a></div>
+                    <div class="place-note">1001尊金色千手观音 ·  ¥600</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">14:00</div>
+                <div class="content">
+                    <div class="place-name">🏯 <a href="https://maps.apple.com/?q=高台寺">高台寺</a></div>
+                    <div class="place-note">丰臣秀吉正室宁宁所建 ·  ¥600</div>
+                    <div class="place-tags"><span class="tag">🎋 苔庭</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">15:00</div>
+                <div class="content">
+                    <div class="place-name">🚶 <a href="https://maps.apple.com/?q=三年坂二年坂">三年坂·二年坂</a></div>
+                    <div class="place-note">石板路江户风情</div>
+                    <div class="place-tags"><span class="tag free">免费</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">19:30</div>
+                <div class="content">
+                    <div class="place-name">🍽️ <a href="https://maps.apple.com/?q=AGIYAO">鱼料理 AGIYAO</a></div>
+                    <div class="place-note">主厨推荐套餐 · 已付 ¥36,300</div>
+                    <div class="place-tags"><span class="tag booked">✅ 已付款</span></div>
+                    <a class="map-link" href="https://maps.apple.com/?q=AGIYAO">📍 地图</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Day 2 -->
+<section id="day2">
+    <h2 class="section-title">Day 2 · 5月2日（星期六）</h2>
+    
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-num">DAY 02</div>
+            <div class="day-date">西芳寺 → 嵐山 → 贵船</div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time">10:30</div>
+                <div class="content">
+                    <div class="place-name">🪷 <a href="https://maps.apple.com/?q=西芳寺">西芳寺（苔寺）</a></div>
+                    <div class="place-note">写经体验 · 已预约 R200247</div>
+                    <div class="place-tags"><span class="tag heritage">🎯 世界遗产</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">12:15</div>
+                <div class="content">
+                    <div class="place-name">⛩️ <a href="https://maps.apple.com/?q=松尾大社">松尾大社</a></div>
+                    <div class="place-note">酒神神社</div>
+                    <div class="place-tags"><span class="tag free">免费</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">13:05</div>
+                <div class="content">
+                    <div class="place-name">🎋 <a href="https://maps.apple.com/?q=嵯峨野竹林">嵯峨野竹林</a></div>
+                    <div class="place-note">京都最具代表性景象</div>
+                    <div class="place-tags"><span class="tag free">免费</span></div>
+                    <a class="map-link" href="https://maps.apple.com/?q=嵯峨野竹林">📍 地图</a>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">13:50</div>
+                <div class="content">
+                    <div class="place-name">⛩️ <a href="https://maps.apple.com/?q=天龙寺">天龙寺·曹源池庭园</a></div>
+                    <div class="place-note">世遗禅寺 ·  ¥500</div>
+                    <div class="place-tags"><span class="tag heritage">🎯 世界遗产</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">16:30</div>
+                <div class="content">
+                    <div class="place-name">🚃 叡山电铁「きらら」</div>
+                    <div class="place-note">出町柳 → 贵船口 · 穿越溪谷</div>
+                    <a class="map-link" href="https://maps.apple.com/?q=貴船口駅">📍 地图</a>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">17:25</div>
+                <div class="content">
+                    <div class="place-name">⛩️ <a href="https://maps.apple.com/?q=貴船神社">贵船神社</a></div>
+                    <div class="place-note">水占签放入贵船川</div>
+                    <div class="place-tags"><span class="tag free">免费</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">18:30</div>
+                <div class="content">
+                    <div class="place-name">🍱 贵船川床料理</div>
+                    <div class="place-note">⚠️ 须今日立即预约！</div>
+                    <div class="place-tags"><span class="tag" style="background:#ff6b6b;color:#fff">⚠️ 待预约</span></div>
+                    <a class="map-link" href="https://maps.apple.com/?q=貴船川床">📍 地图</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Day 3 -->
+<section id="day3">
+    <h2 class="section-title">Day 3 · 5月3日（星期日��</h2>
+    
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-num">DAY 03</div>
+            <div class="day-date">宇治世遗 → 金阁线 → 二条城</div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time">08:30</div>
+                <div class="content">
+                    <div class="place-name">🌸 <a href="https://maps.apple.com/?q=平等院鳳凰堂">平等院凤凰堂</a></div>
+                    <div class="place-note">8:30开门即入 ·  ¥600+¥300</div>
+                    <div class="place-tags"><span class="tag heritage">🎯 世界遗产</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">10:00</div>
+                <div class="content">
+                    <div class="place-name">⛩️ <a href="https://maps.apple.com/?q=宇治上神社">宇治上神社</a></div>
+                    <div class="place-note">日本现存最古老神社</div>
+                    <div class="place-tags"><span class="tag heritage">🎯 世界遗产</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">11:55</div>
+                <div class="content">
+                    <div class="place-name">✨ <a href="https://maps.apple.com/?q=金閣寺">金阁寺（鹿苑寺）</a></div>
+                    <div class="place-note">金箔外壁 ·  ¥500</div>
+                    <div class="place-tags"><span class="tag heritage">🎯 世界遗产</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">12:55</div>
+                <div class="content">
+                    <div class="place-name">🪨 <a href="https://maps.apple.com/?q=龍安寺">龙安寺</a></div>
+                    <div class="place-note">枯山水石庭 ·  ¥600</div>
+                    <div class="place-tags"><span class="tag heritage">🎯 世界遗产</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">13:55</div>
+                <div class="content">
+                    <div class="place-name">🏯 <a href="https://maps.apple.com/?q=仁和寺">仁和寺</a></div>
+                    <div class="place-note">御室御所 ·  ¥800</div>
+                    <div class="place-tags"><span class="tag heritage">🎯 世界遗产</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">15:15</div>
+                <div class="content">
+                    <div class="place-name">🏯 <a href="https://maps.apple.com/?q=二条城">元离宫二条城</a></div>
+                    <div class="place-note">莺张廊下 ·  ¥1000</div>
+                    <div class="place-tags"><span class="tag heritage">🎯 世界遗产</span></div>
+                </div>
+            </div>
+            <div class="timeline-item booked">
+                <div class="time">19:00</div>
+                <div class="content">
+                    <div class="place-name">🍽️ <a href="https://maps.apple.com/?q=京料理鶴清">京料理 鶴清（纳凉床）</a></div>
+                    <div class="place-note">主厨推荐京怀石 · 已付 ¥35,200</div>
+                    <div class="place-tags"><span class="tag booked">✅ 已付款</span></div>
+                    <a class="map-link" href="https://maps.apple.com/?q=京料理鶴清">📍 地图</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Day 4 -->
+<section id="day4">
+    <h2 class="section-title">Day 4 · 5月4日（星期一）</h2>
+    
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-num">DAY 04</div>
+            <div class="day-date">奈良世界遗产 → 祇园角</div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time">08:15</div>
+                <div class="content">
+                    <div class="place-name">🏯 <a href="https://maps.apple.com/?q=興福寺">兴福寺</a></div>
+                    <div class="place-note">国宝馆阿修罗像 ·  ¥700+¥300</div>
+                    <div class="place-tags"><span class="tag heritage">🎯 世界遗产</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">09:20</div>
+                <div class="content">
+                    <div class="place-name">🦌 <a href="https://maps.apple.com/?q=奈良公園">奈良公园·鹿群</a></div>
+                    <div class="place-note">鹿煎饼 ¥200</div>
+                    <div class="place-tags"><span class="tag free">免费</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">10:00</div>
+                <div class="content">
+                    <div class="place-name">🏛️ <a href="https://maps.apple.com/?q=奈良国立博物館">奈良国立博物馆</a></div>
+                    <div class="place-note">佛像馆 ·  ¥700</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">13:00</div>
+                <div class="content">
+                    <div class="place-name">⛩️ <a href="https://maps.apple.com/?q=東大阪">东大寺</a></div>
+                    <div class="place-note">大仏殿 ·  ¥800</div>
+                    <div class="place-tags"><span class="tag heritage">🎯 世界遗产</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">14:45</div>
+                <div class="content">
+                    <div class="place-name">🏯 <a href="https://maps.apple.com/?q=二月堂">二月堂·法华堂</a></div>
+                    <div class="place-note">俯瞰奈良盆地</div>
+                    <div class="place-tags"><span class="tag free">免费</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">15:25</div>
+                <div class="content">
+                    <div class="place-name">⛩️ <a href="https://maps.apple.com/?q=春日大社">春日大社</a></div>
+                    <div class="place-note">1780盏石灯笼 ·  ¥500</div>
+                    <div class="place-tags"><span class="tag heritage">🎯 世界遗产</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">19:00</div>
+                <div class="content">
+                    <div class="place-name">🎭 <a href="https://maps.apple.com/?q=祇園甲部歌舞練場">祇园角</a></div>
+                    <div class="place-note">舞妓京舞·茶道·约1小时 · ¥5500</div>
+                    <div class="place-tags"><span class="tag">🎭 传统艺能</span></div>
+                    <a class="map-link" href="https://maps.apple.com/?q=祇園甲部歌舞練場">📍 地图</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Day 5 -->
+<section id="day5">
+    <h2 class="section-title">Day 5 · 5月5日（星期二）</h2>
+    
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-num">DAY 05</div>
+            <div class="day-date">银阁寺 → 哲学之道 → 返程</div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time">07:15</div>
+                <div class="content">
+                    <div class="place-name">⛩️ <a href="https://maps.apple.com/?q=南禅寺">南禅寺</a></div>
+                    <div class="place-note">水路阁 ·  ¥600</div>
+                    <div class="place-tags"><span class="tag">🌿 晨间人少</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">07:55</div>
+                <div class="content">
+                    <div class="place-name">🚶 <a href="https://maps.apple.com/?q=哲学の道">哲学之道</a></div>
+                    <div class="place-note">2km漫步 · 5月新绿</div>
+                    <div class="place-tags"><span class="tag free">免费</span></div>
+                    <a class="map-link" href="https://maps.apple.com/?q=哲学の道">📍 地图</a>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">09:05</div>
+                <div class="content">
+                    <div class="place-name">🌙 <a href="https://maps.apple.com/?q=銀閣寺">银阁寺（慈照寺）</a></div>
+                    <div class="place-note">银沙滩·向月台 ·  ¥500</div>
+                    <div class="place-tags"><span class="tag heritage">🎯 世界遗产</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">12:00</div>
+                <div class="content">
+                    <div class="place-name">🚃 HARUKA 出发</div>
+                    <div class="place-note">京都站 → 关西机场</div>
+                    <div class="place-tags"><span class="tag booked">✅ 已购票</span></div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">15:00</div>
+                <div class="content">
+                    <div class="place-name">✈️ HX615 起飞</div>
+                    <div class="place-note">关西机场T1 → 香港T1</div>
+                    <div class="place-tags"><span class="tag booked">✅ 已确认</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 待办事项 -->
+<section>
+    <h2 class="section-title">⚠️ 紧迫待办</h2>
+    <div class="restaurant-card">
+        <div class="restaurant-name">🔴 贵船川床料理（Day 2 晚餐）</div>
+        <div class="restaurant-info">今天必须立即预约！推荐餐厅：</div>
+        <div class="restaurant-info">• ひろ文 ¥13,200~ · hirobun.co.jp</div>
+        <div class="restaurant-info">• 右源太 ¥10,900~ · ugenta.co.jp</div>
+    </div>
+</section>
+
+<!-- 景点统计 -->
+<section>
+    <h2 class="section-title">📊 行程统计</h2>
+    <div class="info-grid">
+        <div class="info-card">
+            <div class="label">景点总数</div>
+            <div class="value">29处</div>
+        </div>
+        <div class="info-card">
+            <div class="label">世界遗产</div>
+            <div class="value">12处</div>
+        </div>
+        <div class="info-card">
+            <div class="label">已预约/付款</div>
+            <div class="value">5项</div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p>行程制作：2026年4月26日</p>
+    <p>如有变更请以最新预订确认信为准</p>
+</footer>
+
+<script>
+// 平滑滚动
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const id = link.getAttribute('href');
+        document.querySelector(id).scrollIntoView({behavior: 'smooth'});
+    });
+});
+
+// 滚动高亮
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    sections.forEach(section => {
+        const top = section.offsetTop - 100;
+        const height = section.offsetHeight;
+        const id = section.getAttribute('id');
+        
+        if (scrolled >= top && scrolled < top + height) {
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + id) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+});
+</script>
+
+</body>
+</html>
