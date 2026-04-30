@@ -3,1839 +3,879 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>京都之旅 · 2026.05</title>
+<title>京都之旅 · 2026.05 · ZHENG TENG</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600&family=Noto+Serif+JP:wght@300;400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
 <style>
+/* ── TOKENS ── */
 :root {
-  --washi: #F5F0E8;
-  --ink: #1A1410;
-  --sumi: #2C2420;
-  --vermillion: #C0392B;
-  --gold: #B8860B;
-  --moss: #4A5240;
-  --pale-gold: #E8D5A3;
-  --light-washi: #FAF7F2;
-  --border: rgba(26,20,16,0.12);
-  --shadow: rgba(26,20,16,0.08);
+  --ink:       #14100D;
+  --sumi:      #201810;
+  --washi:     #F4EFE6;
+  --washi-alt: #EDE7DA;
+  --cream:     #FAF7F2;
+  --vermillion:#B83232;
+  --gold:      #9A7A30;
+  --pale-gold: #D4B870;
+  --moss:      #3E4A32;
+  --celadon:   #7A9A8A;
+  --border:    rgba(20,16,13,.10);
+  --border-lt: rgba(20,16,13,.06);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--washi);
-  color: var(--ink);
-  font-family: 'Noto Serif SC', 'Noto Serif JP', serif;
-  font-weight: 300;
-  line-height: 1.8;
-  overflow-x: hidden;
+/* ── RESET ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--washi);
+  color:var(--ink);
+  font-family:'Noto Serif SC','Noto Serif JP',serif;
+  font-weight:300;
+  line-height:1.85;
+  overflow-x:hidden;
 }
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
 
-/* ── NOISE TEXTURE OVERLAY ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.4;
+/* ── WASHI TEXTURE ── */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:999;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.028'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;opacity:.6;
 }
 
 /* ── HERO ── */
-.hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: var(--ink);
+.hero{
+  position:relative;height:100vh;min-height:600px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;
+  background:var(--ink);
 }
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: 
-    radial-gradient(ellipse at 20% 50%, rgba(192,57,43,0.15) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(184,134,11,0.1) 0%, transparent 50%),
-    linear-gradient(160deg, #0D0A08 0%, #1A1210 40%, #0F0C0A 100%);
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 80% at 15% 60%, rgba(184,50,50,.18) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 60% at 85% 20%, rgba(154,122,48,.14) 0%, transparent 55%),
+    linear-gradient(165deg,#0A0806 0%,#181210 45%,#0D0A07 100%);
 }
-
-.hero-mon {
-  position: absolute;
-  font-size: min(55vw, 520px);
-  color: rgba(255,255,255,0.025);
-  font-family: 'Noto Serif JP', serif;
-  line-height: 1;
-  user-select: none;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  letter-spacing: -0.05em;
+.hero-kanji{
+  position:absolute;
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(280px,45vw,520px);
+  color:rgba(255,255,255,.022);
+  line-height:1;user-select:none;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  letter-spacing:-.05em;
 }
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding: 2rem;
+.hero-content{
+  position:relative;z-index:1;
+  text-align:center;padding:2rem;
 }
-
-.hero-date {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.35em;
-  color: var(--pale-gold);
-  opacity: 0.7;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  animation: fadeUp 1.2s ease both;
+.hero-eyebrow{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:.8rem;
+  letter-spacing:.4em;color:var(--pale-gold);opacity:.6;
+  text-transform:uppercase;margin-bottom:1.8rem;
+  animation:fadeUp 1.2s ease both;
 }
-
-.hero-title {
-  font-size: clamp(2.8rem, 8vw, 6rem);
-  font-weight: 300;
-  color: var(--washi);
-  line-height: 1.1;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.5rem;
-  animation: fadeUp 1.2s 0.2s ease both;
+.hero-title{
+  font-size:clamp(3rem,9vw,6.5rem);
+  font-weight:300;color:var(--washi);
+  letter-spacing:.12em;line-height:1.05;margin-bottom:.6rem;
+  animation:fadeUp 1.2s .18s ease both;
 }
-
-.hero-subtitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
-  color: var(--pale-gold);
-  opacity: 0.6;
-  letter-spacing: 0.15em;
-  margin-bottom: 3rem;
-  animation: fadeUp 1.2s 0.4s ease both;
+.hero-subtitle{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:clamp(1rem,2.5vw,1.35rem);
+  color:var(--pale-gold);opacity:.55;letter-spacing:.18em;
+  margin-bottom:2.8rem;
+  animation:fadeUp 1.2s .32s ease both;
 }
-
-.hero-divider {
-  width: 60px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--pale-gold), transparent);
-  margin: 0 auto 3rem;
-  animation: fadeUp 1.2s 0.5s ease both;
+.hero-rule{
+  width:56px;height:1px;margin:0 auto 2.8rem;
+  background:linear-gradient(90deg,transparent,var(--pale-gold),transparent);
+  animation:fadeUp 1.2s .42s ease both;
 }
-
-.hero-meta {
-  display: flex;
-  gap: 3rem;
-  justify-content: center;
-  animation: fadeUp 1.2s 0.6s ease both;
+.hero-stats{
+  display:flex;gap:3rem;justify-content:center;flex-wrap:wrap;
+  animation:fadeUp 1.2s .52s ease both;
 }
-
-.hero-meta-item {
-  text-align: center;
+.hero-stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.2rem;color:var(--pale-gold);display:block;line-height:1;
 }
-
-.hero-meta-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
-  color: var(--pale-gold);
-  display: block;
-  line-height: 1;
+.hero-stat-label{
+  font-size:.62rem;letter-spacing:.22em;
+  color:rgba(244,239,230,.35);text-transform:uppercase;margin-top:.3rem;
 }
-
-.hero-meta-label {
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  color: rgba(245,240,232,0.4);
-  text-transform: uppercase;
-  margin-top: 0.3rem;
+.scroll-cue{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.6rem;
+  color:rgba(244,239,230,.25);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;
+  animation:fadeUp 1.2s 1s ease both;
 }
-
-.scroll-hint {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  animation: fadeUp 1.2s 1s ease both;
-  color: rgba(245,240,232,0.3);
-  font-size: 0.65rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-}
-
-.scroll-line {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, rgba(245,240,232,0.3), transparent);
-  animation: scrollLine 2s 1.5s ease-in-out infinite;
+.scroll-line{
+  width:1px;height:44px;
+  background:linear-gradient(to bottom,rgba(244,239,230,.28),transparent);
+  animation:scrollPulse 2.2s 1.6s ease-in-out infinite;
 }
 
 /* ── NAV ── */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(245,240,232,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  padding: 0 2rem;
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(244,239,230,.94);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:1120px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  height:54px;padding:0 2rem;
+}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;letter-spacing:.2em;color:var(--sumi);
+}
+.nav-links{display:flex;gap:.1rem;list-style:none;flex-wrap:wrap}
+.nav-links a{
+  display:block;padding:.35rem .75rem;
+  font-size:.68rem;letter-spacing:.14em;color:var(--sumi);
+  border-radius:2px;transition:background .18s,color .18s;
+}
+.nav-links a:hover,.nav-links a.active{background:var(--ink);color:var(--washi)}
+
+/* ── SECTION SHELL ── */
+.section{padding:5.5rem 2rem}
+.section--dark{background:var(--ink);color:var(--washi)}
+.section--alt{background:var(--washi-alt)}
+.section-inner{max-width:1120px;margin:0 auto}
+.section-eyebrow{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:.76rem;letter-spacing:.32em;text-transform:uppercase;
+  opacity:.45;margin-bottom:.7rem;
+}
+.section-title{
+  font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:300;
+  letter-spacing:.08em;line-height:1.3;margin-bottom:2.8rem;
 }
 
-.nav-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 56px;
+/* ── BOOKING GRID ── */
+.booking-grid{display:grid;gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)}
+.booking-row{
+  display:grid;grid-template-columns:52px 1fr auto;gap:1.2rem;
+  align-items:center;padding:1.1rem 1.4rem;
+  background:rgba(20,16,13,.96);transition:background .2s;
+}
+.booking-row:hover{background:rgba(255,255,255,.04)}
+.booking-icon{font-size:1.3rem;text-align:center}
+.booking-name{font-size:.88rem;letter-spacing:.06em;margin-bottom:.1rem}
+.booking-time{font-family:'Cormorant Garamond',serif;font-size:.76rem;opacity:.4;letter-spacing:.1em}
+.badge{
+  font-size:.6rem;letter-spacing:.12em;padding:.22rem .65rem;
+  border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.42);
+  white-space:nowrap;
+}
+.badge--ok{border-color:rgba(62,74,50,.7);color:#8FAF72;background:rgba(62,74,50,.15)}
+
+/* ── RESERVATIONS TABLE ── */
+.res-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:var(--border)}
+.res-cell{
+  background:var(--cream);padding:1.2rem 1.4rem;
+  font-size:.82rem;line-height:1.6;
+}
+.res-cell strong{display:block;font-weight:400;letter-spacing:.06em;margin-bottom:.3rem}
+.res-tag{
+  display:inline-block;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.15rem .5rem;background:var(--vermillion);color:#fff;margin-bottom:.5rem;
 }
 
-.nav-logo {
-  font-size: 1rem;
-  letter-spacing: 0.2em;
-  color: var(--sumi);
-  text-decoration: none;
+/* ── TRANSPORT TABLE ── */
+.transport-table{width:100%;border-collapse:collapse;font-size:.8rem}
+.transport-table th{
+  text-align:left;font-weight:400;font-size:.65rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(20,16,13,.38);padding:.7rem .9rem;
+  border-bottom:1px solid var(--border);
 }
-
-.nav-links {
-  display: flex;
-  gap: 0.2rem;
-  list-style: none;
+.transport-table td{
+  padding:.85rem .9rem;border-bottom:1px solid var(--border-lt);
+  vertical-align:top;line-height:1.55;
 }
+.transport-table tr:hover td{background:rgba(20,16,13,.018)}
+.fixed{color:var(--moss);font-weight:400}
+.bus{color:var(--gold)}
 
-.nav-links a {
-  display: block;
-  padding: 0.4rem 0.8rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
-  color: var(--sumi);
-  text-decoration: none;
-  border-radius: 2px;
-  transition: background 0.2s, color 0.2s;
+/* ── DAY HEADER ── */
+.day-header{
+  display:grid;grid-template-columns:auto 1fr;gap:2rem;
+  align-items:start;margin-bottom:3rem;
+  padding-bottom:2rem;border-bottom:1px solid var(--border);
 }
-
-.nav-links a:hover {
-  background: var(--ink);
-  color: var(--washi);
+.day-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(5rem,11vw,8rem);font-weight:300;
+  color:rgba(20,16,13,.055);line-height:.85;letter-spacing:-.02em;
 }
-
-/* ── BOOKING OVERVIEW ── */
-.booking-section {
-  background: var(--ink);
-  color: var(--washi);
-  padding: 5rem 2rem;
+.day-meta{padding-top:.6rem}
+.day-date{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:.82rem;letter-spacing:.2em;color:var(--vermillion);
+  margin-bottom:.4rem;opacity:.8;
 }
-
-.booking-inner {
-  max-width: 1000px;
-  margin: 0 auto;
+.day-title{
+  font-size:clamp(1.2rem,2.8vw,1.8rem);font-weight:400;
+  letter-spacing:.04em;line-height:1.3;margin-bottom:.5rem;
 }
-
-.section-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 0.8rem;
-  letter-spacing: 0.3em;
-  opacity: 0.5;
-  text-transform: uppercase;
-  margin-bottom: 0.8rem;
-}
-
-.section-title {
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  font-weight: 300;
-  letter-spacing: 0.1em;
-  margin-bottom: 3rem;
-  line-height: 1.3;
-}
-
-.booking-grid {
-  display: grid;
-  gap: 1px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.booking-row {
-  display: grid;
-  grid-template-columns: 60px 1fr auto;
-  gap: 1.5rem;
-  align-items: center;
-  padding: 1.2rem 1.5rem;
-  background: rgba(26,20,16,0.95);
-  transition: background 0.2s;
-}
-
-.booking-row:hover { background: rgba(255,255,255,0.04); }
-
-.booking-icon { font-size: 1.4rem; text-align: center; }
-
-.booking-detail { flex: 1; }
-
-.booking-name {
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.15rem;
-}
-
-.booking-time {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.78rem;
-  opacity: 0.45;
-  letter-spacing: 0.1em;
-}
-
-.booking-badge {
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
-  padding: 0.25rem 0.7rem;
-  border: 1px solid rgba(255,255,255,0.2);
-  color: rgba(255,255,255,0.5);
-  white-space: nowrap;
-}
-
-.booking-badge.confirmed {
-  border-color: rgba(74,82,64,0.6);
-  color: #8FAF7A;
-  background: rgba(74,82,64,0.15);
-}
-
-/* ── DAY SECTIONS ── */
-.day-section {
-  padding: 6rem 2rem;
-  position: relative;
-}
-
-.day-section:nth-child(even) { background: var(--light-washi); }
-
-.day-inner { max-width: 1100px; margin: 0 auto; }
-
-.day-header {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 2rem;
-  align-items: start;
-  margin-bottom: 4rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.day-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(4rem, 10vw, 7rem);
-  font-weight: 300;
-  color: rgba(26,20,16,0.06);
-  line-height: 0.85;
-  letter-spacing: -0.02em;
-}
-
-.day-info { padding-top: 0.5rem; }
-
-.day-date {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 0.85rem;
-  letter-spacing: 0.2em;
-  color: var(--vermillion);
-  margin-bottom: 0.5rem;
-  opacity: 0.75;
-}
-
-.day-title {
-  font-size: clamp(1.3rem, 3vw, 1.9rem);
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  line-height: 1.3;
-  margin-bottom: 0.6rem;
-}
-
-.day-theme {
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  color: var(--moss);
-  opacity: 0.7;
-}
+.day-theme{font-size:.76rem;letter-spacing:.12em;color:var(--moss);opacity:.7}
 
 /* ── TIMELINE ── */
-.timeline {
-  position: relative;
-  margin-bottom: 3rem;
+.timeline{position:relative;margin-bottom:2.5rem}
+.timeline::before{
+  content:'';position:absolute;
+  left:88px;top:0;bottom:0;width:1px;
+  background:linear-gradient(to bottom,var(--border),transparent);
+}
+.tl-item{display:grid;grid-template-columns:92px 1fr;gap:1.4rem;position:relative}
+.tl-item+.tl-item{margin-top:0}
+.tl-time{
+  text-align:right;padding-top:.85rem;padding-right:1.4rem;
+  font-family:'Cormorant Garamond',serif;
+  font-size:.8rem;letter-spacing:.08em;
+  color:rgba(20,16,13,.38);position:relative;
+}
+.tl-time::after{
+  content:'';position:absolute;right:-5px;top:1.2rem;
+  width:9px;height:9px;border-radius:50%;
+  background:var(--washi);border:1px solid var(--border);z-index:1;
+}
+.tl-item.hl .tl-time::after{
+  background:var(--vermillion);border-color:var(--vermillion);
+  width:11px;height:11px;right:-6px;
+}
+.tl-body{padding:.65rem 0 1.4rem}
+.tl-tag{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--moss);opacity:.65;margin-bottom:.15rem}
+.tl-name{font-size:.96rem;font-weight:400;letter-spacing:.04em;margin-bottom:.25rem}
+.tl-desc{font-size:.78rem;color:rgba(20,16,13,.52);line-height:1.65}
+.tl-warn{margin-top:.35rem;font-size:.72rem;color:var(--vermillion);opacity:.75}
+.chip{
+  display:inline-block;font-size:.62rem;letter-spacing:.1em;
+  padding:.18rem .55rem;border:1px solid var(--border);
+  color:rgba(20,16,13,.38);margin-top:.35rem;
 }
 
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 52px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, var(--border), transparent);
+/* ── CARDS GRID ── */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
+  gap:1px;background:var(--border);border:1px solid var(--border);
+  margin-top:2.5rem;
 }
-
-.timeline-item {
-  display: grid;
-  grid-template-columns: 105px 1fr;
-  gap: 1.5rem;
-  margin-bottom: 0;
-  position: relative;
+.card{
+  background:var(--washi);
+  display:block;position:relative;overflow:hidden;
+  transition:transform .3s ease;
+  cursor:pointer;
 }
-
-.timeline-item + .timeline-item { margin-top: 0; }
-
-.timeline-time {
-  text-align: right;
-  padding-top: 0.9rem;
-  padding-right: 1.5rem;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
-  color: rgba(26,20,16,0.4);
-  position: relative;
+.card:hover{transform:translateY(-3px);z-index:1}
+.card:hover .card-img{transform:scale(1.05)}
+.card:hover .card-overlay{opacity:1}
+.card-img-wrap{aspect-ratio:4/3;overflow:hidden;background:#DDD5C4}
+.card-img{transition:transform .55s ease}
+.card-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.6rem;background:linear-gradient(135deg,#E6DDD0,#D2C9B8)}
+.card-overlay{
+  position:absolute;top:0;left:0;right:0;
+  aspect-ratio:4/3;
+  background:rgba(184,50,50,.07);
+  display:flex;align-items:flex-end;padding:.9rem;
+  opacity:0;transition:opacity .28s;
 }
-
-.timeline-time::after {
-  content: '';
-  position: absolute;
-  right: -5px;
-  top: 1.25rem;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--washi);
-  border: 1px solid var(--border);
-  z-index: 1;
+.map-btn{
+  font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;
+  background:var(--vermillion);color:#fff;padding:.28rem .65rem;
 }
-
-.timeline-item.highlight .timeline-time::after {
-  background: var(--vermillion);
-  border-color: var(--vermillion);
-  width: 11px;
-  height: 11px;
-  right: -6px;
+.card-body{padding:1.1rem 1.4rem 1.4rem}
+.card-tag{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--vermillion);opacity:.7;margin-bottom:.35rem}
+.card-name{font-size:.96rem;font-weight:400;letter-spacing:.05em;margin-bottom:.35rem;line-height:1.3}
+.card-desc{font-size:.75rem;color:rgba(20,16,13,.52);line-height:1.6}
+.card-foot{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:.8rem;padding-top:.8rem;border-top:1px solid var(--border);
 }
+.card-price{font-family:'Cormorant Garamond',serif;font-size:.85rem;color:var(--gold)}
+.card-sub{font-size:.6rem;letter-spacing:.1em;color:var(--moss);opacity:.6}
 
-.timeline-body {
-  padding: 0.7rem 0 1.5rem 0;
+/* ── MEAL BLOCK ── */
+.meal-block{
+  background:var(--cream);border:1px solid var(--border);
+  padding:1.8rem 2rem;margin:2rem 0;
 }
-
-.timeline-label {
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--moss);
-  margin-bottom: 0.2rem;
-  opacity: 0.7;
+.meal-header{
+  display:flex;align-items:baseline;gap:1rem;margin-bottom:1rem;
+  flex-wrap:wrap;
 }
-
-.timeline-name {
-  font-size: 1rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.3rem;
+.meal-label{
+  font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--vermillion);opacity:.75;
 }
+.meal-name{font-size:1rem;font-weight:400;letter-spacing:.05em}
+.meal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.5rem 2rem}
+.meal-row{display:flex;justify-content:space-between;gap:1rem;font-size:.78rem;padding:.3rem 0;border-bottom:1px solid var(--border-lt)}
+.meal-row:last-child{border:none}
+.meal-key{opacity:.5}
+.meal-val{text-align:right;color:var(--moss)}
+.meal-note{margin-top:.8rem;font-size:.74rem;color:rgba(20,16,13,.48);font-style:italic}
 
-.timeline-desc {
-  font-size: 0.8rem;
-  color: rgba(26,20,16,0.55);
-  line-height: 1.7;
+/* ── CRAFT BLOCK ── */
+.craft-section{
+  border-top:1px solid var(--border);
+  padding-top:2.5rem;margin-top:3rem;
 }
-
-.timeline-note {
-  margin-top: 0.4rem;
-  font-size: 0.75rem;
-  color: var(--vermillion);
-  opacity: 0.75;
+.craft-heading{
+  display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem;
 }
-
-.transport-chip {
-  display: inline-block;
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  padding: 0.2rem 0.6rem;
-  border: 1px solid var(--border);
-  color: rgba(26,20,16,0.45);
-  margin-top: 0.4rem;
+.craft-icon{font-size:1.1rem}
+.craft-title-text{font-size:1rem;font-weight:400;letter-spacing:.08em}
+.craft-subtitle{font-size:.72rem;color:rgba(20,16,13,.45);margin-top:.15rem}
+.craft-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem}
+.craft-card{
+  border:1px solid var(--border);padding:1.4rem 1.5rem;
+  background:var(--cream);transition:border-color .2s;
+  cursor:pointer;
 }
-
-/* ── SPOT CARDS ── */
-.spots-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  margin-top: 3rem;
+.craft-card:hover{border-color:var(--gold)}
+.craft-card-tag{
+  font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.6rem;
 }
-
-.spot-card {
-  background: var(--washi);
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  transition: transform 0.3s ease;
-  position: relative;
-  overflow: hidden;
+.craft-card-name{font-size:.9rem;font-weight:400;letter-spacing:.06em;margin-bottom:.55rem}
+.craft-card-desc{font-size:.75rem;color:rgba(20,16,13,.52);line-height:1.6;margin-bottom:.8rem}
+.craft-card-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.3rem}
+.craft-price{font-family:'Cormorant Garamond',serif;font-size:.82rem;color:var(--gold)}
+.craft-map{
+  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.2rem .55rem;border:1px solid var(--border);
+  color:rgba(20,16,13,.45);transition:all .2s;
 }
+.craft-card:hover .craft-map{background:var(--ink);color:var(--washi);border-color:var(--ink)}
 
-.spot-card:hover { transform: translateY(-3px); z-index: 1; }
-.spot-card:hover .spot-img { transform: scale(1.04); }
-.spot-card:hover .spot-overlay { opacity: 1; }
-
-.spot-img-wrap {
-  aspect-ratio: 4/3;
-  overflow: hidden;
-  background: #E8E0D0;
+/* ── PRACTICAL ── */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.4rem;margin-top:2.5rem}
+.info-card{border:1px solid rgba(255,255,255,.1);padding:1.8rem}
+.info-card-icon{font-size:1.4rem;margin-bottom:.9rem}
+.info-card-title{font-size:.78rem;letter-spacing:.16em;color:var(--pale-gold);opacity:.8;margin-bottom:.9rem}
+.info-list{list-style:none}
+.info-list li{
+  font-size:.76rem;padding:.45rem 0;border-bottom:1px solid rgba(255,255,255,.06);
+  opacity:.6;display:flex;justify-content:space-between;gap:.8rem;
 }
-
-.spot-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-  display: block;
-}
-
-.spot-img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.5rem;
-  background: linear-gradient(135deg, #E8E0D0, #D5CAB8);
-}
-
-.spot-overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  aspect-ratio: 4/3;
-  background: rgba(192,57,43,0.08);
-  display: flex;
-  align-items: flex-end;
-  padding: 1rem;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.spot-map-link {
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  color: white;
-  background: var(--vermillion);
-  padding: 0.3rem 0.7rem;
-  text-transform: uppercase;
-}
-
-.spot-body {
-  padding: 1.2rem 1.5rem 1.5rem;
-}
-
-.spot-tag {
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--vermillion);
-  opacity: 0.7;
-  margin-bottom: 0.4rem;
-}
-
-.spot-name {
-  font-size: 1rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  margin-bottom: 0.4rem;
-  line-height: 1.3;
-}
-
-.spot-desc {
-  font-size: 0.77rem;
-  color: rgba(26,20,16,0.55);
-  line-height: 1.65;
-}
-
-.spot-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0.9rem;
-  padding-top: 0.9rem;
-  border-top: 1px solid var(--border);
-}
-
-.spot-ticket {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.82rem;
-  color: var(--gold);
-}
-
-.spot-world {
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-  color: var(--moss);
-  opacity: 0.6;
-}
-
-/* ── PRACTICAL INFO ── */
-.practical-section {
-  background: var(--ink);
-  color: var(--washi);
-  padding: 5rem 2rem;
-}
-
-.practical-inner {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
-
-.info-card {
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 2rem;
-}
-
-.info-card-icon { font-size: 1.5rem; margin-bottom: 1rem; }
-
-.info-card-title {
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
-  margin-bottom: 1rem;
-  color: var(--pale-gold);
-  opacity: 0.8;
-}
-
-.info-list { list-style: none; }
-
-.info-list li {
-  font-size: 0.8rem;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  opacity: 0.65;
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.info-list li:last-child { border-bottom: none; }
-
-.info-list .val {
-  color: var(--pale-gold);
-  opacity: 0.9;
-  white-space: nowrap;
-}
+.info-list li:last-child{border:none}
+.info-val{color:var(--pale-gold);opacity:.9;white-space:nowrap}
 
 /* ── TODO ── */
-.todo-section {
-  padding: 5rem 2rem;
-  background: var(--light-washi);
+.todo-item{
+  display:grid;grid-template-columns:24px 1fr auto;gap:1rem;
+  align-items:start;padding:1rem 0;border-bottom:1px solid var(--border);
 }
-
-.todo-inner { max-width: 800px; margin: 0 auto; }
-
-.todo-list { margin-top: 2.5rem; }
-
-.todo-item {
-  display: grid;
-  grid-template-columns: 30px 1fr auto;
-  gap: 1rem;
-  align-items: start;
-  padding: 1.2rem 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.todo-priority {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-top: 0.35rem;
-}
-
-.todo-priority.red { background: var(--vermillion); }
-.todo-priority.orange { background: #E67E22; }
-.todo-priority.yellow { background: var(--gold); }
-
-.todo-text { font-size: 0.88rem; }
-
-.todo-label {
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.2rem;
-}
-
-.todo-link {
-  font-size: 0.72rem;
-  color: var(--moss);
-  opacity: 0.6;
-  letter-spacing: 0.06em;
-}
-
-.todo-deadline {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.78rem;
-  color: rgba(26,20,16,0.4);
-  white-space: nowrap;
-  margin-top: 0.2rem;
-}
-
-/* ── TRANSPORT ── */
-.transport-section { padding: 5rem 2rem; }
-.transport-inner { max-width: 900px; margin: 0 auto; }
-
-.transport-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 2.5rem;
-  font-size: 0.82rem;
-}
-
-.transport-table th {
-  text-align: left;
-  font-weight: 400;
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(26,20,16,0.4);
-  padding: 0.8rem 1rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.transport-table td {
-  padding: 1rem;
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-  line-height: 1.5;
-}
-
-.transport-table tr:hover td { background: rgba(26,20,16,0.02); }
-
-.route-highlight { color: var(--moss); font-weight: 400; }
+.todo-dot{width:9px;height:9px;border-radius:50%;margin-top:.45rem}
+.todo-dot.red{background:var(--vermillion)}
+.todo-dot.orange{background:#C87820}
+.todo-dot.yellow{background:var(--gold)}
+.todo-text{font-size:.85rem}
+.todo-label{font-weight:400;letter-spacing:.04em;margin-bottom:.15rem}
+.todo-link{font-size:.7rem;color:var(--moss);opacity:.58}
+.todo-dl{font-family:'Cormorant Garamond',serif;font-size:.76rem;color:rgba(20,16,13,.38);margin-top:.15rem;white-space:nowrap}
 
 /* ── FOOTER ── */
-footer {
-  background: var(--ink);
-  color: rgba(245,240,232,0.3);
-  text-align: center;
-  padding: 3rem 2rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
+footer{
+  background:var(--ink);color:rgba(244,239,230,.28);
+  text-align:center;padding:3.5rem 2rem;
+  font-size:.7rem;letter-spacing:.16em;
 }
-
-footer strong {
-  display: block;
-  color: rgba(245,240,232,0.6);
-  font-weight: 300;
-  font-size: 1rem;
-  letter-spacing: 0.2em;
-  margin-bottom: 0.8rem;
-}
-
-/* ── DECORATIVE ELEMENTS ── */
-.kamon {
-  display: inline-block;
-  font-size: 2rem;
-  opacity: 0.08;
-  margin: 0 0.5rem;
-}
-
-.section-ornament {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  opacity: 0.3;
-  font-size: 0.7rem;
-  letter-spacing: 0.3em;
-}
-
-.section-ornament::before,
-.section-ornament::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: currentColor;
+footer strong{
+  display:block;color:rgba(244,239,230,.55);
+  font-weight:300;font-size:.95rem;letter-spacing:.22em;margin-bottom:.7rem;
 }
 
 /* ── ANIMATIONS ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes scrollLine {
-  0%, 100% { opacity: 0.3; transform: scaleY(1); }
-  50% { opacity: 0.7; transform: scaleY(1.2); }
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: none;
-}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:.7;transform:scaleY(1.15)}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
 
 /* ── RESPONSIVE ── */
-@media (max-width: 640px) {
-  .nav-links { display: none; }
-  .booking-row { grid-template-columns: 40px 1fr; }
-  .booking-badge { display: none; }
-  .day-header { grid-template-columns: 1fr; gap: 0.5rem; }
-  .day-num { font-size: 4rem; }
-  .timeline::before { left: 75px; }
-  .timeline-item { grid-template-columns: 78px 1fr; }
-  .hero-meta { gap: 1.5rem; }
-  .transport-table { font-size: 0.75rem; }
-  .transport-table td, .transport-table th { padding: 0.6rem 0.5rem; }
+@media(max-width:680px){
+  .nav-links{display:none}
+  .day-header{grid-template-columns:1fr;gap:.5rem}
+  .day-num{font-size:4.5rem}
+  .timeline::before{left:68px}
+  .tl-item{grid-template-columns:72px 1fr}
+  .res-grid{grid-template-columns:1fr 1fr}
+  .booking-row{grid-template-columns:40px 1fr}
+  .badge{display:none}
+  .hero-stats{gap:1.6rem}
 }
 </style>
 </head>
 <body>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-mon">京</div>
+  <div class="hero-kanji">京</div>
   <div class="hero-content">
-    <div class="hero-date">2026年5月1日 — 5月5日</div>
+    <p class="hero-eyebrow">ZHENG TENG · Darren ZHENG · 2人同行</p>
     <h1 class="hero-title">京都之旅</h1>
-    <p class="hero-subtitle">Kyoto · Nara · Uji</p>
-    <div class="hero-divider"></div>
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <span class="hero-meta-num">5</span>
-        <span class="hero-meta-label">天</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="hero-meta-num">29</span>
-        <span class="hero-meta-label">处景点</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="hero-meta-num">12</span>
-        <span class="hero-meta-label">世界遗产</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="hero-meta-num">2</span>
-        <span class="hero-meta-label">人同行</span>
-      </div>
+    <p class="hero-subtitle">Kyoto · Nara · Uji · 2026.05.01–05</p>
+    <div class="hero-rule"></div>
+    <div class="hero-stats">
+      <div><span class="hero-stat-num">5</span><p class="hero-stat-label">天</p></div>
+      <div><span class="hero-stat-num">29</span><p class="hero-stat-label">处景点</p></div>
+      <div><span class="hero-stat-num">12</span><p class="hero-stat-label">世界遗产</p></div>
+      <div><span class="hero-stat-num">9</span><p class="hero-stat-label">匠人工艺</p></div>
     </div>
   </div>
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    <span>向下滚动</span>
-  </div>
+  <div class="scroll-cue"><div class="scroll-line"></div><span>向下滚动</span></div>
 </section>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">京都 · 2026</a>
+    <span class="nav-logo">京都 · 2026</span>
     <ul class="nav-links">
       <li><a href="#booking">预订</a></li>
+      <li><a href="#transport">交通</a></li>
       <li><a href="#day1">Day 1</a></li>
       <li><a href="#day2">Day 2</a></li>
       <li><a href="#day3">Day 3</a></li>
       <li><a href="#day4">Day 4</a></li>
       <li><a href="#day5">Day 5</a></li>
-      <li><a href="#transport">交通</a></li>
+      <li><a href="#practical">实用</a></li>
       <li><a href="#todo">待办</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- ── BOOKING OVERVIEW ── -->
-<section class="booking-section" id="booking">
-  <div class="booking-inner">
+<!-- BOOKING -->
+<section class="section section--dark" id="booking">
+  <div class="section-inner">
     <div class="reveal">
-      <div class="section-label">Full Itinerary Overview</div>
+      <p class="section-eyebrow">Full Reservations Overview</p>
       <h2 class="section-title">全程预订总览</h2>
     </div>
     <div class="booking-grid reveal">
-      <div class="booking-row">
-        <div class="booking-icon">✈️</div>
-        <div class="booking-detail">
-          <div class="booking-name">HX616 · 香港T1 → 关西机场T1</div>
-          <div class="booking-time">5月1日 · 02:50 — 07:55</div>
-        </div>
-        <div class="booking-badge confirmed">✓ 已确认</div>
-      </div>
-      <div class="booking-row">
-        <div class="booking-icon">🚃</div>
-        <div class="booking-detail">
-          <div class="booking-name">HARUKA特急 · 关西机场 → 京都站</div>
-          <div class="booking-time">5月1日 · 约08:30发</div>
-        </div>
-        <div class="booking-badge confirmed">✓ 已购票</div>
-      </div>
-      <div class="booking-row">
-        <div class="booking-icon">🏨</div>
-        <div class="booking-detail">
-          <div class="booking-name">DoubleTree by Hilton 京都站</div>
-          <div class="booking-time">5月1日 — 5月3日 · 2晚</div>
-        </div>
-        <div class="booking-badge confirmed">✓ 已确认</div>
-      </div>
-      <div class="booking-row">
-        <div class="booking-icon">🍽️</div>
-        <div class="booking-detail">
-          <div class="booking-name">鱼料理 AGIYAO · 吧台 · 2人</div>
-          <div class="booking-time">5月1日 · 19:30 · ¥36,300</div>
-        </div>
-        <div class="booking-badge confirmed">✓ 已付款</div>
-      </div>
-      <div class="booking-row">
-        <div class="booking-icon">🪷</div>
-        <div class="booking-detail">
-          <div class="booking-name">西芳寺（苔寺）· 预约 R200247</div>
-          <div class="booking-time">5月2日 · 10:30 · 2人</div>
-        </div>
-        <div class="booking-badge confirmed">✓ 已预约</div>
-      </div>
-      <div class="booking-row">
-        <div class="booking-icon">🏨</div>
-        <div class="booking-detail">
-          <div class="booking-name">Holiday Inn 京都五条</div>
-          <div class="booking-time">5月3日 — 5月5日 · 2晚</div>
-        </div>
-        <div class="booking-badge confirmed">✓ 已确认</div>
-      </div>
-      <div class="booking-row">
-        <div class="booking-icon">🍽️</div>
-        <div class="booking-detail">
-          <div class="booking-name">京料理 鶴清 · 纳凉床 · 2人</div>
-          <div class="booking-time">5月3日 · 19:00 · ¥35,200</div>
-        </div>
-        <div class="booking-badge confirmed">✓ 已付款</div>
-      </div>
-      <div class="booking-row">
-        <div class="booking-icon">🚃</div>
-        <div class="booking-detail">
-          <div class="booking-name">HARUKA特急 · 京都站 → 关西机场</div>
-          <div class="booking-time">5月5日 · 12:00发（硬约束）</div>
-        </div>
-        <div class="booking-badge confirmed">✓ 已购票</div>
-      </div>
-      <div class="booking-row">
-        <div class="booking-icon">✈️</div>
-        <div class="booking-detail">
-          <div class="booking-name">HX615 · 关西机场T1 → 香港T1</div>
-          <div class="booking-time">5月5日 · 15:00 — 18:25</div>
-        </div>
-        <div class="booking-badge confirmed">✓ 已确认</div>
-      </div>
+      <div class="booking-row"><div class="booking-icon">✈️</div><div><div class="booking-name">HX616 · 香港T1 → 关西机场T1</div><div class="booking-time">5月1日 · 02:50 — 07:55</div></div><div class="badge badge--ok">✓ 已确认</div></div>
+      <div class="booking-row"><div class="booking-icon">🚃</div><div><div class="booking-name">HARUKA特急 · 关西机场 → 京都站</div><div class="booking-time">5月1日 · 约08:30发 · WEST QR</div></div><div class="badge badge--ok">✓ 已购票</div></div>
+      <div class="booking-row"><div class="booking-icon">🏨</div><div><div class="booking-name">DoubleTree by Hilton 京都站</div><div class="booking-time">5月1日 — 5月3日 · 2晚</div></div><div class="badge badge--ok">✓ 已确认</div></div>
+      <div class="booking-row"><div class="booking-icon">🏨</div><div><div class="booking-name">Holiday Inn 京都五条</div><div class="booking-time">5月3日 — 5月5日 · 2晚</div></div><div class="badge badge--ok">✓ 已确认</div></div>
+      <div class="booking-row"><div class="booking-icon">🍽️</div><div><div class="booking-name">鱼料理 AGIYAO · 吧台 · 2人 · 预约ID 574948</div><div class="booking-time">5月1日 · 19:30 · ¥36,300</div></div><div class="badge badge--ok">✓ 已付款</div></div>
+      <div class="booking-row"><div class="booking-icon">🪷</div><div><div class="booking-name">西芳寺（苔寺）· 预约 R200247</div><div class="booking-time">5月2日 · 10:30 · 须双人护照+QR码</div></div><div class="badge badge--ok">✓ 已预约</div></div>
+      <div class="booking-row"><div class="booking-icon">🏛️</div><div><div class="booking-name">桂离宫 · 导览 · 许可证 No.605423418</div><div class="booking-time">5月3日 · 15:20（15:00登记）· 须护照+许可证号</div></div><div class="badge badge--ok">✓ 已预约</div></div>
+      <div class="booking-row"><div class="booking-icon">🍽️</div><div><div class="booking-name">京料理 鶴清 · 纳凉床 · 2人 · 预约ID 574941</div><div class="booking-time">5月3日 · 19:00 · ¥35,200</div></div><div class="badge badge--ok">✓ 已付款</div></div>
+      <div class="booking-row"><div class="booking-icon">🚃</div><div><div class="booking-name">HARUKA特急 · 京都站 → 关西机场</div><div class="booking-time">5月5日 · 12:00发（硬约束）</div></div><div class="badge badge--ok">✓ 已购票</div></div>
+      <div class="booking-row"><div class="booking-icon">✈️</div><div><div class="booking-name">HX615 · 关西机场T1 → 香港T1</div><div class="booking-time">5月5日 · 15:00 — 18:25</div></div><div class="badge badge--ok">✓ 已确认</div></div>
     </div>
   </div>
 </section>
 
-<!-- ── DAY 1 ── -->
-<section class="day-section" id="day1">
-  <div class="day-inner">
-    <div class="day-header reveal">
-      <div class="day-num">01</div>
-      <div class="day-info">
-        <div class="day-date">5月1日 · 星期五</div>
-        <h2 class="day-title">抵达京都 · 东山历史带</h2>
-        <div class="day-theme">凌晨出发 · 东山经典初探 · 鱼料理 AGIYAO</div>
-      </div>
-    </div>
-
-    <div class="timeline reveal">
-      <div class="timeline-item">
-        <div class="timeline-time">07:55</div>
-        <div class="timeline-body">
-          <div class="timeline-label">抵达</div>
-          <div class="timeline-name">🛬 关西机场T1</div>
-          <div class="timeline-desc">HX616落地，通关（黄金周预留25分钟）</div>
-          <span class="transport-chip">HARUKA → 京都站 约75分钟</span>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">09:45</div>
-        <div class="timeline-body">
-          <div class="timeline-label">入住寄存</div>
-          <div class="timeline-name">🏨 DoubleTree by Hilton 京都站</div>
-          <div class="timeline-desc">寄存行李，购买ICOCA卡 + 巴士一日券¥600</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">10:30</div>
-        <div class="timeline-body">
-          <div class="timeline-label">景点</div>
-          <div class="timeline-name">⛩️ 东福寺</div>
-          <div class="timeline-desc">四重枯山水方丈庭园·禅宗最古山门·通天桥</div>
-          <span class="transport-chip">JR奈良线 3分钟</span>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">11:30</div>
-        <div class="timeline-body">
-          <div class="timeline-label">景点</div>
-          <div class="timeline-name">🏯 三十三间堂</div>
-          <div class="timeline-desc">1001尊金色千手观音·28尊护法神像（风神·雷神）¥600</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">12:15</div>
-        <div class="timeline-body">
-          <div class="timeline-label">博物馆</div>
-          <div class="timeline-name">🏛️ 京都国立博物馆</div>
-          <div class="timeline-desc">平安至江户珍品·明治时代红砖馆 ¥700</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">14:00</div>
-        <div class="timeline-body">
-          <div class="timeline-label">景点</div>
-          <div class="timeline-name">🏯 高台寺</div>
-          <div class="timeline-desc">丰臣秀吉正室宁宁所建·苔庭·竹林·月波楼 ¥600</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">14:45</div>
-        <div class="timeline-body">
-          <div class="timeline-label">漫步</div>
-          <div class="timeline-name">🚶 三年坂 · 二年坂</div>
-          <div class="timeline-desc">石板路·江户风情老铺·京都器皿与抹茶甜品</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">15:30</div>
-        <div class="timeline-body">
-          <div class="timeline-label">漫步</div>
-          <div class="timeline-name">🚶 花见小路</div>
-          <div class="timeline-desc">保存最完整的茶屋建筑群·傍晚邂逅舞伎概率较高</div>
-          <div class="timeline-note">⚠ 请勿追跑、强行拍照或拦截舞伎</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">16:30</div>
-        <div class="timeline-body">
-          <div class="timeline-label">休整</div>
-          <div class="timeline-name">🏨 酒店休整（强制）</div>
-          <div class="timeline-desc">凌晨出发体力消耗，2.5小时充分休息</div>
-        </div>
-      </div>
-      <div class="timeline-item highlight">
-        <div class="timeline-time">19:30</div>
-        <div class="timeline-body">
-          <div class="timeline-label">已预约晚餐</div>
-          <div class="timeline-name">🍽️ 鱼料理 AGIYAO</div>
-          <div class="timeline-desc">主厨推荐套餐¥16,500/人·吧台·当季鲜鱼割烹·步行约18分钟</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="spots-grid reveal">
-      <a class="spot-card" data-lat="34.976" data-lng="135.7723" data-name="Tofuku-ji Temple Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Tofukuji_hojo_garden.JPG/1280px-Tofukuji_hojo_garden.JPG" alt="东福寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>⛩️</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">景点 · 东山区</div>
-          <div class="spot-name">东福寺</div>
-          <div class="spot-desc">方丈庭园以四重枯山水著称，禅宗规模最大，通天桥俯瞰谷地。</div>
-          <div class="spot-meta">
-            <span class="spot-ticket">¥500</span>
-            <span class="spot-world">早秋枫叶名所</span>
-          </div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="34.9883" data-lng="135.7736" data-name="Sanjusangendo Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Sanjusangendo_garan.jpg/1280px-Sanjusangendo_garan.jpg" alt="三十三间堂" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏯</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">景点 · 东山区</div>
-          <div class="spot-name">三十三间堂</div>
-          <div class="spot-desc">1001尊金色千手观音立像一字排开，视觉震撼无与伦比。</div>
-          <div class="spot-meta">
-            <span class="spot-ticket">¥600</span>
-            <span class="spot-world">镰仓时代</span>
-          </div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="34.9878" data-lng="135.7739" data-name="Kyoto National Museum" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Kyoto_national_museum01s3200.jpg/1280px-Kyoto_national_museum01s3200.jpg" alt="京都国立博物馆" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏛️</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">博物馆 · 东山区</div>
-          <div class="spot-name">京都国立博物馆</div>
-          <div class="spot-desc">明治时代西洋红砖建筑，馆藏平安至江户时代国宝级珍品。</div>
-          <div class="spot-meta">
-            <span class="spot-ticket">¥700</span>
-            <span class="spot-world">1897年创立</span>
-          </div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="34.9979" data-lng="135.7823" data-name="Kodai-ji Temple Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Kodaiji_Temple_Kyoto.jpg/1280px-Kodaiji_Temple_Kyoto.jpg" alt="高台寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏯</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">景点 · 东山区</div>
-          <div class="spot-name">高台寺</div>
-          <div class="spot-desc">丰臣秀吉正室宁宁所建，苔庭、竹林与月波楼构成绝美景致。</div>
-          <div class="spot-meta">
-            <span class="spot-ticket">¥600</span>
-            <span class="spot-world">桃山时代</span>
-          </div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="35.0032" data-lng="135.7756" data-name="Hanamikoji Gion Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Gion_Hanamikoji.jpg/800px-Gion_Hanamikoji.jpg" alt="花见小路" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏮</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">街道 · 祇园</div>
-          <div class="spot-name">花见小路</div>
-          <div class="spot-desc">保存最完整的茶屋建筑群，傍晚有概率邂逅赶场的舞伎。</div>
-          <div class="spot-meta">
-            <span class="spot-ticket">免费</span>
-            <span class="spot-world">祇园甲部</span>
-          </div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="34.9953" data-lng="135.7611" data-name="Sakana Ryori AGIYAO Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <div class="spot-img-placeholder">🐟</div>
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">已预约餐厅 · 下京区</div>
-          <div class="spot-name">鱼料理 AGIYAO</div>
-          <div class="spot-desc">主厨推荐套餐¥16,500/人，全国当季鲜鱼割烹，吧台可观厨。</div>
-          <div class="spot-meta">
-            <span class="spot-ticket">19:30</span>
-            <span class="spot-world">✅ 已付¥36,300</span>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ── DAY 2 ── -->
-<section class="day-section" id="day2" style="background:var(--light-washi)">
-  <div class="day-inner">
-    <div class="day-header reveal">
-      <div class="day-num">02</div>
-      <div class="day-info">
-        <div class="day-date">5月2日 · 星期六</div>
-        <h2 class="day-title">西芳寺 · 嵐山 · 贵船川床</h2>
-        <div class="day-theme">秘境写经 · 竹林禅意 · 叡山电铁 · 溪谷川床</div>
-      </div>
-    </div>
-
-    <div class="timeline reveal">
-      <div class="timeline-item highlight">
-        <div class="timeline-time">10:30</div>
-        <div class="timeline-body">
-          <div class="timeline-label">已预约 · 秘境参拜</div>
-          <div class="timeline-name">🪷 西芳寺（苔寺）</div>
-          <div class="timeline-desc">R200247 · 须带双人护照原件 + 入场QR码 · 写经（30分钟）→ 苔庭（60分钟）</div>
-          <div class="timeline-note">⚠ 限额参拜，迟到不候</div>
-          <span class="transport-chip">市巴士28号 四条大宫出发 约35分钟</span>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">12:15</div>
-        <div class="timeline-body">
-          <div class="timeline-label">神社</div>
-          <div class="timeline-name">⛩️ 松尾大社</div>
-          <div class="timeline-desc">酒神神社·山吹花名所·强大磐座庭园（免费）</div>
-          <span class="transport-chip">市巴士 8分钟</span>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">13:05</div>
-        <div class="timeline-body">
-          <div class="timeline-label">嵐山</div>
-          <div class="timeline-name">🎋 嵯峨野竹林</div>
-          <div class="timeline-desc">高耸翠竹，晨光穿透，京都最具代表性的意境（免费）</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">13:50</div>
-        <div class="timeline-body">
-          <div class="timeline-label">世界遗产</div>
-          <div class="timeline-name">⛩️ 天龙寺 · 曹源池庭园</div>
-          <div class="timeline-desc">池泉回游庭园精华·借景岚山·世界遗产 ¥500</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">16:30</div>
-        <div class="timeline-body">
-          <div class="timeline-label">观光列车</div>
-          <div class="timeline-name">🚃 叡山电铁「きらら」</div>
-          <div class="timeline-desc">出町柳 → 贵船口，大型景观侧窗，穿越新绿溪谷，约30分钟</div>
-          <div class="timeline-note">⚠ 非预约制，提前15分钟候车</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">17:25</div>
-        <div class="timeline-body">
-          <div class="timeline-label">神社</div>
-          <div class="timeline-name">⛩️ 贵船神社</div>
-          <div class="timeline-desc">本宫 → 水占签（放入贵船川，字迹显现）→ 奥宫参拜（免费）</div>
-        </div>
-      </div>
-      <div class="timeline-item highlight">
-        <div class="timeline-time">18:30</div>
-        <div class="timeline-body">
-          <div class="timeline-label">待预约晚餐</div>
-          <div class="timeline-name">🍱 贵船川床料理</div>
-          <div class="timeline-desc">川床悬于贵船川水面上方，脚下溪声潺潺，5月新绿最美</div>
-          <div class="timeline-note">⚠ 须今日立即预约 · ひろ文 075-741-2147 / 右源太 075-741-2146</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="spots-grid reveal">
-      <a class="spot-card" data-lat="34.995" data-lng="135.6789" data-name="Saihoji Koke-dera Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Saihoji_moss_garden.jpg/1280px-Saihoji_moss_garden.jpg" alt="西芳寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🪷</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">世界遗产 · 西京区</div>
-          <div class="spot-name">西芳寺（苔寺）</div>
-          <div class="spot-desc">120余种苔藓铺满庭园，5月水分充足，绿意最浓。限额预约制。</div>
-          <div class="spot-meta"><span class="spot-ticket">R200247</span><span class="spot-world">✅ 世界遗产</span></div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="35.017" data-lng="135.6717" data-name="Arashiyama Bamboo Grove Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bamboo_groves_of_Sagano.jpg/800px-Bamboo_groves_of_Sagano.jpg" alt="嵯峨野竹林" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🎋</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">自然 · 嵐山</div>
-          <div class="spot-name">嵯峨野竹林</div>
-          <div class="spot-desc">高耸翠竹成荫，风过竹声如海浪，京都最具代表性的意境之地。</div>
-          <div class="spot-meta"><span class="spot-ticket">免费</span><span class="spot-world">24小时开放</span></div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="35.017" data-lng="135.6748" data-name="Tenryu-ji Temple Arashiyama Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Tenryuji_from_Hojoike.jpg/1280px-Tenryuji_from_Hojoike.jpg" alt="天龙寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>⛩️</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">世界遗产 · 嵐山</div>
-          <div class="spot-name">天龙寺</div>
-          <div class="spot-desc">曹源池庭园以借景岚山著称，池泉回游，倒影山色，禅意深远。</div>
-          <div class="spot-meta"><span class="spot-ticket">¥500</span><span class="spot-world">✅ 世界遗产</span></div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="35.1163" data-lng="135.7602" data-name="Kifune Shrine Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Kibune_Shrine_lanterns.jpg/800px-Kibune_Shrine_lanterns.jpg" alt="贵船神社" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>⛩️</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">神社 · 贵船</div>
-          <div class="spot-name">贵船神社</div>
-          <div class="spot-desc">水神神社，水占签为一绝——将签纸放入贵船川，字迹自然浮现。</div>
-          <div class="spot-meta"><span class="spot-ticket">免费</span><span class="spot-world">结缘著名</span></div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="35.1163" data-lng="135.7589" data-name="Ryori Ryokan Hirobun Kifune Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Kibune_kawadoko.jpg/1280px-Kibune_kawadoko.jpg" alt="贵船川床" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🍱</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">待预约餐厅 · 贵船</div>
-          <div class="spot-name">贵船川床料理</div>
-          <div class="spot-desc">高台搭建于溪流上方，脚下流水，头顶新绿，5月京都最特别的用餐体验。</div>
-          <div class="spot-meta"><span class="spot-ticket">¥10,900~/人</span><span class="spot-world">⚠ 立即预约</span></div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ── DAY 3 ── -->
-<section class="day-section" id="day3">
-  <div class="day-inner">
-    <div class="day-header reveal">
-      <div class="day-num">03</div>
-      <div class="day-info">
-        <div class="day-date">5月3日 · 星期日</div>
-        <h2 class="day-title">宇治 · 金阁线 · 鶴清纳凉床</h2>
-        <div class="day-theme">宇治世遗早游 · 西北金阁线 · 换住Holiday Inn · 鸭川纳凉</div>
-      </div>
-    </div>
-
-    <div class="timeline reveal">
-      <div class="timeline-item">
-        <div class="timeline-time">06:50</div>
-        <div class="timeline-body">
-          <div class="timeline-label">换酒店</div>
-          <div class="timeline-name">🧳 DoubleTree退房 → Holiday Inn寄存行李</div>
-          <div class="timeline-desc">地铁2分钟，Holiday Inn提前寄存行李（IHG标准服务）</div>
-          <div class="timeline-note">⚠ 出发前一天致电确认寄存</div>
-        </div>
-      </div>
-      <div class="timeline-item highlight">
-        <div class="timeline-time">08:30</div>
-        <div class="timeline-body">
-          <div class="timeline-label">世界遗产 · 早到必须</div>
-          <div class="timeline-name">🌸 平等院凤凰堂</div>
-          <div class="timeline-desc">凤凰堂（10日圆硬币背面图案）· 凤翔馆（铜制凤凰原件）· 庭园¥600+殿内¥300</div>
-          <div class="timeline-note">⚠ 8:30开门即入，黄金周下午排队可超2小时</div>
-          <span class="transport-chip">JR奈良线 京都站→宇治 17分钟</span>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">10:00</div>
-        <div class="timeline-body">
-          <div class="timeline-label">世界遗产</div>
-          <div class="timeline-name">⛩️ 宇治上神社</div>
-          <div class="timeline-desc">日本现存最古老神社建筑（1060年）免费</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">11:55</div>
-        <div class="timeline-body">
-          <div class="timeline-label">世界遗产</div>
-          <div class="timeline-name">✨ 金阁寺（鹿苑寺）</div>
-          <div class="timeline-desc">金箔外壁倒映镜湖池，三层楼阁各具建筑风格 ¥500</div>
-          <span class="transport-chip">JR返京都站 + 洛巴士101 约52分钟</span>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">12:55</div>
-        <div class="timeline-body">
-          <div class="timeline-label">世界遗产</div>
-          <div class="timeline-name">🪨 龙安寺</div>
-          <div class="timeline-desc">枯山水石庭，15块石任何角度总有一块被遮蔽，哲学意涵深远 ¥600</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">13:55</div>
-        <div class="timeline-body">
-          <div class="timeline-label">世界遗产</div>
-          <div class="timeline-name">🏯 仁和寺</div>
-          <div class="timeline-desc">世遗御室御所·五重塔·宇多天皇出家之所 ¥800</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">15:15</div>
-        <div class="timeline-body">
-          <div class="timeline-label">世界遗产</div>
-          <div class="timeline-name">🏯 元离宫二条城</div>
-          <div class="timeline-desc">世遗将军御所·鶯张廊下·二之丸庭园 ¥1,000</div>
-          <span class="transport-chip">市巴士 仁和寺→二条城前 约20分钟</span>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">16:55</div>
-        <div class="timeline-body">
-          <div class="timeline-label">入住</div>
-          <div class="timeline-name">🏨 Holiday Inn 京都五条 正式入住</div>
-          <div class="timeline-desc">步行5分钟，取回寄存行李，休整</div>
-        </div>
-      </div>
-      <div class="timeline-item highlight">
-        <div class="timeline-time">19:00</div>
-        <div class="timeline-body">
-          <div class="timeline-label">已预约晚餐</div>
-          <div class="timeline-name">🍽️ 京料理 鶴清（纳凉床）</div>
-          <div class="timeline-desc">主厨推荐京怀石¥16,000/人·纳凉床·鸭川上方高台露台·步行10分钟</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="spots-grid reveal">
-      <a class="spot-card" data-lat="34.8894" data-lng="135.8077" data-name="Byodoin Phoenix Hall Uji" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Byodo-in_in_Uji.jpg/1280px-Byodo-in_in_Uji.jpg" alt="平等院" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🌸</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">世界遗产 · 宇治市</div>
-          <div class="spot-name">平等院凤凰堂</div>
-          <div class="spot-desc">10日圆硬币背面的图案，平安贵族极乐净土的具象化，庄严而优美。</div>
-          <div class="spot-meta"><span class="spot-ticket">¥600+¥300</span><span class="spot-world">✅ 世界遗产</span></div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="35.0394" data-lng="135.7292" data-name="Kinkaku-ji Golden Pavilion Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Kinkakuji-in-Kyoto-2010-wideshot.jpg/1280px-Kinkakuji-in-Kyoto-2010-wideshot.jpg" alt="金阁寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>✨</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">世界遗产 · 北区</div>
-          <div class="spot-name">金阁寺（鹿苑寺）</div>
-          <div class="spot-desc">金箔外壁倒映镜湖池，三层楼阁各呈不同建筑风格，京都最具代表性地标。</div>
-          <div class="spot-meta"><span class="spot-ticket">¥500</span><span class="spot-world">✅ 世界遗产</span></div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="35.0346" data-lng="135.7183" data-name="Ryoan-ji Temple Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Ryoan-ji_Kyoto_Zen_garden_adjusted.jpg/1280px-Ryoan-ji_Kyoto_Zen_garden_adjusted.jpg" alt="龙安寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🪨</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">世界遗产 · 右京区</div>
-          <div class="spot-name">龙安寺</div>
-          <div class="spot-desc">15块石头从任意角度总有一块被遮蔽，枯山水石庭的哲学，令人沉思。</div>
-          <div class="spot-meta"><span class="spot-ticket">¥600</span><span class="spot-world">✅ 世界遗产</span></div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="35.0302" data-lng="135.7144" data-name="Ninna-ji Temple Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Ninnaji06s3200.jpg/1280px-Ninnaji06s3200.jpg" alt="仁和寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏯</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">世界遗产 · 右京区</div>
-          <div class="spot-name">仁和寺</div>
-          <div class="spot-desc">宇多天皇出家之所，历代天皇驻锡地，御室樱与五重塔并列为一绝。</div>
-          <div class="spot-meta"><span class="spot-ticket">¥800</span><span class="spot-world">✅ 世界遗产</span></div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="35.0142" data-lng="135.7481" data-name="Nijo Castle Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Ninomaru_Palace_Nijo_Castle_Kyoto_Japan.jpg/1280px-Ninomaru_Palace_Nijo_Castle_Kyoto_Japan.jpg" alt="二条城" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏯</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">世界遗产 · 中京区</div>
-          <div class="spot-name">元离宫二条城</div>
-          <div class="spot-desc">江户幕府将军御所，鶯张廊下行走时发出声响以防刺客，历史感震撼。</div>
-          <div class="spot-meta"><span class="spot-ticket">¥1,000</span><span class="spot-world">✅ 世界遗产</span></div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="35.0038" data-lng="135.7673" data-name="Kyoryori Tsuruse Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <div class="spot-img-placeholder">🌊</div>
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">已预约餐厅 · 下京区</div>
-          <div class="spot-name">京料理 鶴清</div>
-          <div class="spot-desc">纳凉床悬于鸭川上方，京都夏季传统，微风溪声伴随会席料理。</div>
-          <div class="spot-meta"><span class="spot-ticket">19:00</span><span class="spot-world">✅ 已付¥35,200</span></div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ── DAY 4 ── -->
-<section class="day-section" id="day4" style="background:var(--light-washi)">
-  <div class="day-inner">
-    <div class="day-header reveal">
-      <div class="day-num">04</div>
-      <div class="day-info">
-        <div class="day-date">5月4日 · 星期一</div>
-        <h2 class="day-title">奈良世界遗产一日 · 祇园角</h2>
-        <div class="day-theme">东大寺 · 奈良国立博物馆 · 春日大社 · 兴福寺 · 传统艺能</div>
-      </div>
-    </div>
-
-    <div class="timeline reveal">
-      <div class="timeline-item">
-        <div class="timeline-time">07:20</div>
-        <div class="timeline-body">
-          <div class="timeline-label">出发</div>
-          <div class="timeline-name">🚃 近铁特急 京都站 → 近铁奈良站</div>
-          <div class="timeline-desc">约35分钟·¥1,040（含特急券）·近铁站距景点更近</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">08:15</div>
-        <div class="timeline-body">
-          <div class="timeline-label">世界遗产</div>
-          <div class="timeline-name">🏯 兴福寺</div>
-          <div class="timeline-desc">国宝馆阿修罗像（三面六臂·日本最美佛像）·五重塔（50.1m）¥700+¥300</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">10:00</div>
-        <div class="timeline-body">
-          <div class="timeline-label">博物馆</div>
-          <div class="timeline-name">🏛️ 奈良国立博物馆</div>
-          <div class="timeline-desc">佛像馆（1894年重要文化财建筑）·飞鸟至镰仓佛教艺术 ¥700</div>
-          <div class="timeline-note">✅ 5/4みどりの日法定假日照常开放</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">13:00</div>
-        <div class="timeline-body">
-          <div class="timeline-label">世界遗产 · 重点</div>
-          <div class="timeline-name">⛩️ 东大寺</div>
-          <div class="timeline-desc">南大门金刚力士像（高8.4m）· 大仏殿（世界最大木造建筑）· 15米卢舍那佛 ¥800</div>
-          <div class="timeline-note">柱洞体验：与大佛鼻孔等宽，钻过据说可开智慧</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">14:45</div>
-        <div class="timeline-body">
-          <div class="timeline-label">世界遗产</div>
-          <div class="timeline-name">🏯 二月堂 · 法华堂</div>
-          <div class="timeline-desc">步行上山约15分钟，俯瞰奈良盆地全景（免费）</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">15:25</div>
-        <div class="timeline-body">
-          <div class="timeline-label">世界遗产</div>
-          <div class="timeline-name">⛩️ 春日大社</div>
-          <div class="timeline-desc">1780盏石灯笼参道·原始森林·朱红本殿 ¥500</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">16:30</div>
-        <div class="timeline-body">
-          <div class="timeline-label">历史街区</div>
-          <div class="timeline-name">🏘️ 奈良町 · 格子之家</div>
-          <div class="timeline-desc">江户时代町家建筑群，传统商家格子窗建筑（免费）</div>
-        </div>
-      </div>
-      <div class="timeline-item highlight">
-        <div class="timeline-time">19:00</div>
-        <div class="timeline-body">
-          <div class="timeline-label">传统艺能 · 现场购票</div>
-          <div class="timeline-name">🎭 祇园角（ギオンコーナー）</div>
-          <div class="timeline-desc">舞妓京舞·茶道·华道·箏曲·雅乐·狂言·文乐·约1小时 ¥5,500/人</div>
-          <div class="timeline-note">⚠ 提前45分钟到场排队·个人无法网络预约</div>
-          <span class="transport-chip">近铁奈良→京都站 35分钟 + 京阪→祇园四条 15分钟</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="spots-grid reveal">
-      <a class="spot-card" data-lat="34.6816" data-lng="135.8282" data-name="Kofuku-ji Temple Nara" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Kofukuji_Pagoda_Nara_Japan.jpg/800px-Kofukuji_Pagoda_Nara_Japan.jpg" alt="兴福寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏯</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">世界遗产 · 奈良市</div>
-          <div class="spot-name">兴福寺</div>
-          <div class="spot-desc">国宝馆内阿修罗像三面六臂，被誉为日本最美佛像。五重塔高50.1米。</div>
-          <div class="spot-meta"><span class="spot-ticket">¥700+¥300</span><span class="spot-world">✅ 世界遗产</span></div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="34.6839" data-lng="135.8398" data-name="Nara National Museum" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Nara_National_Museum_01.jpg/1280px-Nara_National_Museum_01.jpg" alt="奈良国立博物馆" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🏛️</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">博物馆 · 奈良市</div>
-          <div class="spot-name">奈良国立博物馆</div>
-          <div class="spot-desc">1894年重要文化财建筑，馆藏飞鸟至镰仓时代佛教艺术精华。</div>
-          <div class="spot-meta"><span class="spot-ticket">¥700</span><span class="spot-world">1895年创立</span></div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="34.6887" data-lng="135.8397" data-name="Todai-ji Temple Nara" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Todaiji_Cathedral.jpg/1280px-Todaiji_Cathedral.jpg" alt="东大寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>⛩️</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">世界遗产 · 奈良市</div>
-          <div class="spot-name">东大寺</div>
-          <div class="spot-desc">世界最大木造建筑，内供15米高卢舍那佛。南大门金刚力士像震撼人心。</div>
-          <div class="spot-meta"><span class="spot-ticket">¥800</span><span class="spot-world">✅ 世界遗产</span></div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="34.6815" data-lng="135.8448" data-name="Kasuga Taisha Shrine Nara" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Kasugataisha_Shrine.jpg/800px-Kasugataisha_Shrine.jpg" alt="春日大社" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>⛩️</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">世界遗产 · 奈良市</div>
-          <div class="spot-name">春日大社</div>
-          <div class="spot-desc">1780盏石灯笼沿参道排列，原始森林夹道，朱红本殿庄严肃穆。</div>
-          <div class="spot-meta"><span class="spot-ticket">¥500</span><span class="spot-world">✅ 世界遗产</span></div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="35.0032" data-lng="135.775" data-name="Gion Corner Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Gion_matsuri_2009.jpg/1280px-Gion_matsuri_2009.jpg" alt="祇园角" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🎭</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">传统艺能 · 祇园</div>
-          <div class="spot-name">祇园角</div>
-          <div class="spot-desc">约1小时浓缩7种传统艺能：舞妓京舞、茶道、华道、箏曲、雅乐、狂言、文乐。</div>
-          <div class="spot-meta"><span class="spot-ticket">¥5,500/人</span><span class="spot-world">现场购票</span></div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ── DAY 5 ── -->
-<section class="day-section" id="day5">
-  <div class="day-inner">
-    <div class="day-header reveal">
-      <div class="day-num">05</div>
-      <div class="day-info">
-        <div class="day-date">5月5日 · 星期二</div>
-        <h2 class="day-title">东山北收官 · 返港</h2>
-        <div class="day-theme">银阁寺 · 哲学之道 · 南禅寺 · 12:00 HARUKA</div>
-      </div>
-    </div>
-
-    <div class="timeline reveal">
-      <div class="timeline-item">
-        <div class="timeline-time">07:15</div>
-        <div class="timeline-body">
-          <div class="timeline-label">早游</div>
-          <div class="timeline-name">⛩️ 南禅寺</div>
-          <div class="timeline-desc">水路阁（明治古砖引水渠·免费）·方丈庭园¥600·早晨人少气氛最佳</div>
-          <span class="transport-chip">地铁五条→蹴上 约15分钟</span>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">07:55</div>
-        <div class="timeline-body">
-          <div class="timeline-label">漫步</div>
-          <div class="timeline-name">🚶 哲学之道</div>
-          <div class="timeline-desc">南→北漫步2km·沿琵琶湖疏水渠·5月新绿盎然（免费）</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">09:05</div>
-        <div class="timeline-body">
-          <div class="timeline-label">世界遗产</div>
-          <div class="timeline-name">🌙 银阁寺（慈照寺）</div>
-          <div class="timeline-desc">银沙滩·向月台·侘寂苔庭·室町文化代表 ¥500</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">10:30</div>
-        <div class="timeline-body">
-          <div class="timeline-label">退房</div>
-          <div class="timeline-name">🏨 Holiday Inn 退房</div>
-          <div class="timeline-desc">整理行李，地铁2分钟至京都站</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">11:05</div>
-        <div class="timeline-body">
-          <div class="timeline-label">购物</div>
-          <div class="timeline-name">🛍️ 京都站伊势丹B1–2F</div>
-          <div class="timeline-desc">生八桥·抹茶点心·西京漬·调味酱·土产</div>
-        </div>
-      </div>
-      <div class="timeline-item highlight">
-        <div class="timeline-time">12:00</div>
-        <div class="timeline-body">
-          <div class="timeline-label">⚠️ 硬约束</div>
-          <div class="timeline-name">🚃 HARUKA出发 → 关西机场</div>
-          <div class="timeline-desc">凭WEST QR，约75分钟，13:15抵达机场T1</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-time">15:00</div>
-        <div class="timeline-body">
-          <div class="timeline-label">返港</div>
-          <div class="timeline-name">✈️ HX615 关西机场 → 香港</div>
-          <div class="timeline-desc">18:25抵达香港T1，旅程圆满结束</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="spots-grid reveal">
-      <a class="spot-card" data-lat="35.0115" data-lng="135.793" data-name="Nanzen-ji Temple Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Nanzenji_suirokaku.JPG/1280px-Nanzenji_suirokaku.JPG" alt="南禅寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>⛩️</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">名刹 · 左京区</div>
-          <div class="spot-name">南禅寺 · 水路阁</div>
-          <div class="spot-desc">明治时代古砖引水渠嵌入千年古寺，工业遗迹与禅意的视觉反差独特。</div>
-          <div class="spot-meta"><span class="spot-ticket">方丈¥600</span><span class="spot-world">临济宗大本山</span></div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="35.0224" data-lng="135.7956" data-name="Philosopher's Walk Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Philosophers_Walk_Kyoto.jpg/1280px-Philosophers_Walk_Kyoto.jpg" alt="哲学之道" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🚶</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">散步道 · 左京区</div>
-          <div class="spot-name">哲学之道</div>
-          <div class="spot-desc">沿琵琶湖疏水渠的2公里石板小径，哲学家西田几多郎常在此冥思。</div>
-          <div class="spot-meta"><span class="spot-ticket">免费</span><span class="spot-world">5月新绿盎然</span></div>
-        </div>
-      </a>
-      <a class="spot-card" data-lat="35.0271" data-lng="135.7985" data-name="Ginkaku-ji Silver Pavilion Kyoto" href="#" target="_blank">
-        <div class="spot-img-wrap">
-          <img class="spot-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Ginkaku-ji_temple.jpg/1280px-Ginkaku-ji_temple.jpg" alt="银阁寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'spot-img-placeholder\'>🌙</div>'">
-          <div class="spot-overlay"><span class="spot-map-link">📍 地图导航</span></div>
-        </div>
-        <div class="spot-body">
-          <div class="spot-tag">世界遗产 · 左京区</div>
-          <div class="spot-name">银阁寺（慈照寺）</div>
-          <div class="spot-desc">侘寂美学极致，银沙滩与向月台的砂纹庭园，苔庭幽深。</div>
-          <div class="spot-meta"><span class="spot-ticket">¥500</span><span class="spot-world">✅ 世界遗产</span></div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ── TRANSPORT ── -->
-<section class="transport-section" id="transport">
-  <div class="transport-inner">
+<!-- TRANSPORT -->
+<section class="section section--alt" id="transport">
+  <div class="section-inner">
     <div class="reveal">
-      <div class="section-label">Getting Around</div>
-      <h2 class="section-title" style="font-size:clamp(1.4rem,3vw,2rem);font-weight:300;letter-spacing:0.1em;margin-bottom:0">交通速查</h2>
+      <p class="section-eyebrow">Transport · Verified Timings</p>
+      <h2 class="section-title">交通实测复核表</h2>
     </div>
-    <table class="transport-table reveal">
-      <thead>
-        <tr>
-          <th>路线</th>
-          <th>方式</th>
-          <th>时间</th>
-          <th>票种</th>
-        </tr>
-      </thead>
+    <p class="reveal" style="font-size:.8rem;opacity:.55;margin-bottom:1.5rem">⚠️ 黄金周巴士热门路线严重拥挤，所有巴士时间已含候车缓冲，请严格按此表规划，勿按单纯乘车时间计算。Suica / ICOCA 可覆盖全程所有路段（HARUKA除外）。Day1·3·5建议购买巴士一日券¥600。</p>
+    <div class="reveal">
+    <table class="transport-table">
+      <thead><tr><th>路段</th><th>交通方式</th><th>实测时间（含候车）</th></tr></thead>
       <tbody>
-        <tr>
-          <td class="route-highlight">关西机场 → 京都站</td>
-          <td>HARUKA特急</td>
-          <td>约75分钟</td>
-          <td>WEST QR ✅</td>
-        </tr>
-        <tr>
-          <td class="route-highlight">京都站 → 宇治</td>
-          <td>JR奈良线（普通）</td>
-          <td>约17分钟</td>
-          <td>ICOCA</td>
-        </tr>
-        <tr>
-          <td class="route-highlight">京都站 → 金阁寺前</td>
-          <td>洛巴士101号</td>
-          <td>约35分钟</td>
-          <td>ICOCA</td>
-        </tr>
-        <tr>
-          <td class="route-highlight">京都站 → 奈良（推荐）</td>
-          <td>近铁特急</td>
-          <td>约35分钟</td>
-          <td>ICOCA + 特急券¥520</td>
-        </tr>
-        <tr>
-          <td class="route-highlight">四条大宫 → 西芳寺</td>
-          <td>市巴士28号</td>
-          <td>约35分钟</td>
-          <td>ICOCA</td>
-        </tr>
-        <tr>
-          <td class="route-highlight">出町柳 → 贵船口</td>
-          <td>叡山电铁きらら</td>
-          <td>约30分钟</td>
-          <td>现金/ICOCA</td>
-        </tr>
-        <tr>
-          <td class="route-highlight">蹴上 → 南禅寺</td>
-          <td>步行</td>
-          <td>5分钟</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td class="route-highlight">银阁寺前 → 烏丸今出川</td>
-          <td>市巴士</td>
-          <td>约15分钟</td>
-          <td>ICOCA</td>
-        </tr>
-        <tr>
-          <td class="route-highlight">京都站 → 关西机场</td>
-          <td>HARUKA特急</td>
-          <td>约75分钟</td>
-          <td>WEST QR ✅</td>
-        </tr>
+        <tr><td>关西机场 → 京都站</td><td>HARUKA特急</td><td class="fixed">75分钟（固定）</td></tr>
+        <tr><td>京都站 → 宇治</td><td>JR奈良线</td><td class="fixed">17分钟（固定）</td></tr>
+        <tr><td>京都站→北大路（地铁）→金阁寺道</td><td>地铁+楽洛109</td><td class="bus">约45分钟（推荐路线）</td></tr>
+        <tr><td>金阁寺道 → 龙安寺前</td><td>市巴士109</td><td class="bus">候车10分+乘车6分=约16分</td></tr>
+        <tr><td>龙安寺前 → 四条大宫</td><td>市巴士10系统</td><td class="bus">候车10分+乘车25分=约35分</td></tr>
+        <tr><td>四条大宫 → 阪急桂站</td><td>阪急京都线</td><td class="fixed">12分钟（固定）</td></tr>
+        <tr><td>阪急桂站 → 桂离宫入口</td><td>步行</td><td class="fixed">20分钟（宫内厅官方）</td></tr>
+        <tr><td>四条大宫 → 西芳寺（苔寺）</td><td>市巴士28号</td><td class="bus">候车10分+乘车35分=约45分（黄金周可达60分）</td></tr>
+        <tr><td>嵯峨嵐山 → 京都站</td><td>JR嵯峨野线</td><td class="fixed">17分钟（固定）</td></tr>
+        <tr><td>京都站 → 出町柳</td><td>市巴士4号</td><td class="bus">候车10分+乘车25分=约35分</td></tr>
+        <tr><td>出町柳 → 贵船口（叡山电铁きらら）</td><td>叡山电铁</td><td class="fixed">31分钟（固定）</td></tr>
+        <tr><td>京都站 → 近铁奈良</td><td>近铁特急</td><td class="fixed">35分钟（固定）</td></tr>
+        <tr><td>地铁五条 → 蹴上</td><td>地铁乌丸线+东西线</td><td class="fixed">约15分钟（固定）</td></tr>
+        <tr><td>银阁寺前 → 京都站（含退房）</td><td>市巴士+地铁</td><td class="bus">约70分钟</td></tr>
+        <tr><td>京都站 → 关西机场</td><td>HARUKA特急</td><td class="fixed">75分钟（固定）</td></tr>
       </tbody>
     </table>
-  </div>
-</section>
-
-<!-- ── TODO ── -->
-<section class="todo-section" id="todo">
-  <div class="todo-inner">
-    <div class="reveal">
-      <div class="section-label">Action Required</div>
-      <h2 class="section-title" style="font-size:clamp(1.4rem,3vw,2rem);font-weight:300;letter-spacing:0.1em;margin-bottom:0">紧迫待办</h2>
-    </div>
-    <div class="todo-list reveal">
-      <div class="todo-item">
-        <div class="todo-priority red"></div>
-        <div class="todo-text">
-          <div class="todo-label">贵船川床晚餐预约（5/2晚）</div>
-          <div class="todo-link">ひろ文: hirobun.co.jp / 075-741-2147 · 右源太: ugenta.co.jp / 075-741-2146</div>
-        </div>
-        <div class="todo-deadline">今天内</div>
-      </div>
-      <div class="todo-item">
-        <div class="todo-priority orange"></div>
-        <div class="todo-text">
-          <div class="todo-label">Holiday Inn致电确认行李提前寄存（5/3）</div>
-          <div class="todo-link">预订确认信中的酒店电话</div>
-        </div>
-        <div class="todo-deadline">出发前一天</div>
-      </div>
-      <div class="todo-item">
-        <div class="todo-priority orange"></div>
-        <div class="todo-text">
-          <div class="todo-label">Day4祇园角晚餐预约（5/4晚·祇园角后）</div>
-          <div class="todo-link">myconciergejapan.com/zh-hans/ · 高台寺丹虎 / SAIKI / 祇园肉料理OKA</div>
-        </div>
-        <div class="todo-deadline">尽快</div>
-      </div>
-      <div class="todo-item">
-        <div class="todo-priority orange"></div>
-        <div class="todo-text">
-          <div class="todo-label">叡山电铁きらら时刻表确认（5/2）</div>
-          <div class="todo-link">eizan.co.jp · 出町柳→贵船口方向</div>
-        </div>
-        <div class="todo-deadline">出发前</div>
-      </div>
-      <div class="todo-item">
-        <div class="todo-priority yellow"></div>
-        <div class="todo-text">
-          <div class="todo-label">近铁特急券（5/4·京都↔奈良）</div>
-          <div class="todo-link">¥520/人，可用ICOCA购买或现场购票</div>
-        </div>
-        <div class="todo-deadline">当日可购</div>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- ── PRACTICAL ── -->
-<section class="practical-section">
-  <div class="practical-inner">
+<!-- DAY 1 -->
+<section class="section" id="day1">
+  <div class="section-inner">
+    <div class="day-header reveal">
+      <div class="day-num">01</div>
+      <div class="day-meta">
+        <div class="day-date">5月1日 · 星期五 · 建议购买巴士一日券¥600</div>
+        <h2 class="day-title">抵达京都 · 东山历史带 · 鱼料理 AGIYAO</h2>
+        <div class="day-theme">凌晨出发 · 东山经典初探 · 鱼割烹19:30</div>
+      </div>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item"><div class="tl-time">07:55</div><div class="tl-body"><div class="tl-tag">抵达</div><div class="tl-name">🛬 关西机场T1</div><div class="tl-desc">HX616落地·通关取行李预留30分钟<span class="chip">HARUKA → 京都站 75分钟（固定）</span></div></div></div>
+      <div class="tl-item"><div class="tl-time">09:45</div><div class="tl-body"><div class="tl-tag">购票·寄存</div><div class="tl-name">京都站 · ICOCA + 巴士一日券</div><div class="tl-desc">JR服务台购ICOCA（¥2,000押金+加值¥5,000）+ 巴士一日券¥600 → 步行5分钟至DoubleTree寄存行李</div></div></div>
+      <div class="tl-item"><div class="tl-time">10:30</div><div class="tl-body"><div class="tl-tag">景点</div><div class="tl-name">⛩️ 东福寺</div><div class="tl-desc">四重枯山水方丈庭园·禅宗最古山门·通天桥 🎟️¥500<span class="chip">JR奈良线 京都站→东福寺 3分钟（固定）</span></div></div></div>
+      <div class="tl-item"><div class="tl-time">11:40</div><div class="tl-body"><div class="tl-tag">景点</div><div class="tl-name">🏯 三十三间堂</div><div class="tl-desc">1001尊金色千手观音·28尊护法神像 🎟️¥600</div></div></div>
+      <div class="tl-item"><div class="tl-time">12:30</div><div class="tl-body"><div class="tl-tag">博物馆 · 午餐</div><div class="tl-name">🏛️ 京都国立博物馆</div><div class="tl-desc">平安至江户珍品·明治红砖馆 🎟️¥700 · 午餐于智積院会館食事処（旁步行2分·¥2,000–3,000·无需预约）</div></div></div>
+      <div class="tl-item"><div class="tl-time">14:35</div><div class="tl-body"><div class="tl-tag">景点</div><div class="tl-name">🏯 高台寺</div><div class="tl-desc">丰臣秀吉正室宁宁所建·苔庭·竹林·月波楼 🎟️¥600</div></div></div>
+      <div class="tl-item"><div class="tl-time">15:20</div><div class="tl-body"><div class="tl-tag">漫步 · 工艺采购</div><div class="tl-name">🚶 三年坂 · 二年坂</div><div class="tl-desc">石板路·江户老铺·清水焼·组纽·薫物·七味（详见采购指南）</div></div></div>
+      <div class="tl-item"><div class="tl-time">16:05</div><div class="tl-body"><div class="tl-tag">漫步</div><div class="tl-name">🚶 花见小路</div><div class="tl-desc">保存最完整茶屋建筑群·傍晚邂逅舞伎概率较高<div class="tl-warn">⚠ 请勿追跑·强行拍照或拦截舞伎</div><span class="chip">返回DoubleTree 候车10分+乘车10分+步行5分≈40分钟</span></div></div></div>
+      <div class="tl-item"><div class="tl-time">17:20</div><div class="tl-body"><div class="tl-tag">强制休整</div><div class="tl-name">🏨 DoubleTree by Hilton 京都站 入住</div><div class="tl-desc">凌晨02:50出发·务必充分休息至19:00</div></div></div>
+      <div class="tl-item hl"><div class="tl-time">19:30</div><div class="tl-body"><div class="tl-tag">已预约晚餐</div><div class="tl-name">🍽️ 鱼料理 AGIYAO · 预约ID 574948</div><div class="tl-desc">主厨推荐套餐¥16,500/人 · 吧台 · 步行约18分钟</div></div></div>
+    </div>
+
+    <!-- Day1 Spot Cards -->
+    <div class="cards reveal">
+      <div class="card" data-lat="34.9760" data-lng="135.7723" data-name="Tofuku-ji Temple Kyoto">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Tofukuji_hojo_garden.JPG/800px-Tofukuji_hojo_garden.JPG" alt="东福寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>⛩️</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">景点 · 东山区</div><div class="card-name">东福寺</div><div class="card-desc">四重枯山水方丈庭园，禅宗规模最大。通天桥俯瞰谷地，早秋枫叶名所。</div><div class="card-foot"><span class="card-price">¥500</span><span class="card-sub">禅寺</span></div></div>
+      </div>
+      <div class="card" data-lat="34.9883" data-lng="135.7736" data-name="Sanjusangendo Kyoto">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Sanjusangendo_garan.jpg/800px-Sanjusangendo_garan.jpg" alt="三十三间堂" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>🏯</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">景点 · 东山区</div><div class="card-name">三十三间堂</div><div class="card-desc">1001尊金色千手观音立像一字排开，视觉震撼无与伦比。</div><div class="card-foot"><span class="card-price">¥600</span><span class="card-sub">镰仓时代</span></div></div>
+      </div>
+      <div class="card" data-lat="34.9878" data-lng="135.7739" data-name="Kyoto National Museum">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Kyoto_national_museum01s3200.jpg/800px-Kyoto_national_museum01s3200.jpg" alt="京都国立博物馆" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>🏛️</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">博物馆 · 东山区</div><div class="card-name">京都国立博物馆</div><div class="card-desc">明治时代西洋红砖建筑，馆藏平安至江户时代国宝级珍品。</div><div class="card-foot"><span class="card-price">¥700</span><span class="card-sub">1897年创立</span></div></div>
+      </div>
+      <div class="card" data-lat="34.9979" data-lng="135.7823" data-name="Kodai-ji Temple Kyoto">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Kodaiji_Temple_Kyoto.jpg/800px-Kodaiji_Temple_Kyoto.jpg" alt="高台寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>🏯</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">景点 · 东山区</div><div class="card-name">高台寺</div><div class="card-desc">丰臣秀吉正室宁宁所建，苔庭、竹林与月波楼构成绝美景致。</div><div class="card-foot"><span class="card-price">¥600</span><span class="card-sub">桃山时代</span></div></div>
+      </div>
+      <div class="card" data-lat="35.0032" data-lng="135.7756" data-name="Hanamikoji Gion Kyoto">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Gion_Hanamikoji.jpg/800px-Gion_Hanamikoji.jpg" alt="花见小路" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>🏮</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">街道 · 祇园</div><div class="card-name">花见小路</div><div class="card-desc">保存最完整的茶屋建筑群，傍晚有概率邂逅赶场的舞伎。</div><div class="card-foot"><span class="card-price">免费</span><span class="card-sub">祇园甲部</span></div></div>
+      </div>
+      <div class="card" data-lat="34.9953" data-lng="135.7611" data-name="Sakana Ryori AGIYAO Kyoto">
+        <div class="card-img-wrap"><div class="card-ph">🐟</div></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">已预约餐厅 · 下京区</div><div class="card-name">鱼料理 AGIYAO</div><div class="card-desc">主厨推荐套餐¥16,500/人，全国当季鲜鱼割烹，吧台可观厨。</div><div class="card-foot"><span class="card-price">19:30 ✅</span><span class="card-sub">¥36,300已付</span></div></div>
+      </div>
+    </div>
+
+    <!-- Day1 Craft -->
+    <div class="craft-section reveal">
+      <div class="craft-heading"><span class="craft-icon">🛍️</span><div><div class="craft-title-text">Day 1 匠人工艺采购 · 三年坂·二年坂（15:20–16:05）</div><div class="craft-subtitle">沿石板路随走随看，各店预留10–20分钟</div></div></div>
+      <div class="craft-grid">
+        <div class="craft-card" data-lat="34.9990" data-lng="135.7835" data-name="Tosai Kiyomizuyaki Pottery Sannenzaka Kyoto">
+          <div class="craft-card-tag">清水焼 · 陶器</div>
+          <div class="craft-card-name">工芸陶舗 東哉</div>
+          <div class="craft-card-desc">创业90年，所有器物由职人手工制作，件件有职人签款。茶碗·小皿·急须·花器均有。产宁坂沿线。</div>
+          <div class="craft-card-foot"><span class="craft-price">¥3,000~</span><span class="craft-map">📍 地图</span></div>
+        </div>
+        <div class="craft-card" data-lat="35.0006" data-lng="135.7820" data-name="Shoen Kumihimo Ninenzaka Kyoto">
+          <div class="craft-card-tag">京くみひも · 组纽</div>
+          <div class="craft-card-name">昇苑くみひも 産寧坂店</div>
+          <div class="craft-card-desc">宇治创业70年工房直营，「手组」技法制作。可现场观看。手链·书签·眼镜绳。二年坂沿线。</div>
+          <div class="craft-card-foot"><span class="craft-price">¥1,500~</span><span class="craft-map">📍 地图</span></div>
+        </div>
+        <div class="craft-card" data-lat="34.9988" data-lng="135.7838" data-name="Shoyeido Incense Sannenzaka Kyoto">
+          <div class="craft-card-tag">京薫物 · 线香</div>
+          <div class="craft-card-name">松栄堂 産寧坂店</div>
+          <div class="craft-card-desc">江户时代创业，天然素材调香，配方师承秘传。線香·香木·香炉成套，匠人精神典范。</div>
+          <div class="craft-card-foot"><span class="craft-price">¥800~</span><span class="craft-map">📍 地图</span></div>
+        </div>
+        <div class="craft-card" data-lat="34.9984" data-lng="135.7843" data-name="Shichimiya Honpo Seven Spice Sannenzaka Kyoto">
+          <div class="craft-card-tag">京七味 · 一子相传</div>
+          <div class="craft-card-name">七味家本舗</div>
+          <div class="craft-card-desc">一子相传调合七味，店内现场称量研磨，气味与超市版本有本质差异。三年坂下·清水坂口。</div>
+          <div class="craft-card-foot"><span class="craft-price">¥500~</span><span class="craft-map">📍 地图</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 2 -->
+<section class="section section--alt" id="day2">
+  <div class="section-inner">
+    <div class="day-header reveal">
+      <div class="day-num">02</div>
+      <div class="day-meta">
+        <div class="day-date">5月2日 · 星期六</div>
+        <h2 class="day-title">西芳寺 · 嵐山 · 叡山电铁きらら · 贵船神社</h2>
+        <div class="day-theme">秘境写经 · 竹林禅意 · 新绿溪谷 · 夜间灯笼参拜 ✨ 青もみじ徐行运転</div>
+      </div>
+    </div>
+    <div style="background:rgba(184,50,50,.06);border-left:2px solid var(--vermillion);padding:1rem 1.4rem;margin-bottom:2rem;font-size:.8rem;line-height:1.7" class="reveal">
+      ✨ <strong>5月2日特别：叡山电铁「青もみじ新绿徐行运転」首日</strong>（5/2–5/5）<br>
+      市原–二ノ瀬「もみじのトンネル」区间列车放慢速度，青枫从车窗两侧涌来。<br>
+      同日起夜间ライトアップ开始（17:00–20:01班次），车内关灯慢行穿越绿隧，17:30班次恰在范围内。<br>
+      贵船神社18:00后灯笼逐渐点亮，18:05抵达正值最美时刻。
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item"><div class="tl-time">08:50</div><div class="tl-body"><div class="tl-tag">出发</div><div class="tl-name">🚌 市巴士28号：四条大宫 → 苔寺</div><div class="tl-desc">步行至四条大宫约15分钟<span class="chip">候车10分+乘车35分=约45分钟（黄金周可达60分）</span></div></div></div>
+      <div class="tl-item hl"><div class="tl-time">10:30</div><div class="tl-body"><div class="tl-tag">已预约 · 限额参拜</div><div class="tl-name">🪷 西芳寺（苔寺）· R200247</div><div class="tl-desc">须带双人护照原件 + 入场QR码 · 写经30分钟 → 苔庭60分钟 · 120余种苔藓5月状态极佳<div class="tl-warn">⚠ 迟到不候</div></div></div></div>
+      <div class="tl-item"><div class="tl-time">12:25</div><div class="tl-body"><div class="tl-tag">神社</div><div class="tl-name">⛩️ 松尾大社</div><div class="tl-desc">酒神神社·山吹花名所·磐座庭园·免费<span class="chip">候车10分+乘车8分=约18分钟</span></div></div></div>
+      <div class="tl-item"><div class="tl-time">13:25</div><div class="tl-body"><div class="tl-tag">午餐 · 嵐山</div><div class="tl-name">🍱 嵐山ぎゃあてい（不可预约·当日取整理券）</div><div class="tl-desc">御膳¥2,500 · 12种创作小菜 · 约55分钟<div class="tl-warn">备选：鯛匠HANANA（鯛茶漬）/ 嵯峨とうふ稲（湯葉·和牛）</div></div></div></div>
+      <div class="tl-item"><div class="tl-time">14:20</div><div class="tl-body"><div class="tl-tag">嵐山</div><div class="tl-name">🎋 嵯峨野竹林</div><div class="tl-desc">高耸翠竹·午后光线柔和·人流比上午少·免费</div></div></div>
+      <div class="tl-item"><div class="tl-time">15:10</div><div class="tl-body"><div class="tl-tag">世界遗产</div><div class="tl-name">⛩️ 天龙寺 · 曹源池庭园</div><div class="tl-desc">池泉回游庭园精华·借景岚山·世界遗产 🎟️¥500<span class="chip">JR嵯峨野线→京都站 17分钟（固定）→ 市巴士4号→出町柳 候车10分+乘车25分≈35分</span></div></div></div>
+      <div class="tl-item"><div class="tl-time">17:15</div><div class="tl-body"><div class="tl-tag">候车</div><div class="tl-name">叡山电铁 出町柳站</div><div class="tl-desc">提前到站候车·非预约制先到先坐·抢中央8席朝窗景观座（右侧窗）</div></div></div>
+      <div class="tl-item hl"><div class="tl-time">17:30</div><div class="tl-body"><div class="tl-tag">观光列车 · 新绿徐行</div><div class="tl-name">🚃 叡山电铁「きらら」出町柳 → 贵船口</div><div class="tl-desc">31分钟（固定）· 市原–二ノ瀬「もみじのトンネル」放慢速度穿越 · 车内关灯 · 青枫包围 · 提前连拍准备<div class="tl-warn">⚠ 18:01贵船口下车 → 接驳巴士3分钟¥160 或步行20分钟上坡</div></div></div></div>
+      <div class="tl-item"><div class="tl-time">18:05</div><div class="tl-body"><div class="tl-tag">神社 · 夜间点灯</div><div class="tl-name">⛩️ 贵船神社</div><div class="tl-desc">本宫参拜 → 水占签（放入贵船川，字迹显现） → 奥宫 · 免费 · 18:00起ライトアップ点灯<div class="tl-warn">⚠ 注意末班车约22:00</div></div></div></div>
+      <div class="tl-item"><div class="tl-time">19:00</div><div class="tl-body"><div class="tl-tag">返回 · 晚餐自选</div><div class="tl-name">🚃 叡山电铁返回出町柳 → 市区晚餐</div><div class="tl-desc">木屋町通·河原町周边居酒屋或おばんざい定食·无需预约·¥2,500–5,000/人</div></div></div>
+    </div>
+    <div class="cards reveal">
+      <div class="card" data-lat="34.9950" data-lng="135.6789" data-name="Saihoji Kokedera Moss Temple Kyoto">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Saihoji_moss_garden.jpg/800px-Saihoji_moss_garden.jpg" alt="西芳寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>🪷</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">世界遗产 · 西京区</div><div class="card-name">西芳寺（苔寺）</div><div class="card-desc">120余种苔藓铺满庭园，5月水分充足，绿意最浓。限额预约制。</div><div class="card-foot"><span class="card-price">R200247 ✅</span><span class="card-sub">世界遗产</span></div></div>
+      </div>
+      <div class="card" data-lat="35.0170" data-lng="135.6717" data-name="Arashiyama Bamboo Grove Kyoto">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Bamboo_groves_of_Sagano.jpg/800px-Bamboo_groves_of_Sagano.jpg" alt="嵯峨野竹林" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>🎋</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">自然 · 嵐山</div><div class="card-name">嵯峨野竹林</div><div class="card-desc">高耸翠竹成荫，风过竹声如海浪，京都最具代表性意境。</div><div class="card-foot"><span class="card-price">免费</span><span class="card-sub">24小时开放</span></div></div>
+      </div>
+      <div class="card" data-lat="35.0170" data-lng="135.6748" data-name="Tenryu-ji Temple Arashiyama Kyoto">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Tenryuji_from_Hojoike.jpg/800px-Tenryuji_from_Hojoike.jpg" alt="天龙寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>⛩️</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">世界遗产 · 嵐山</div><div class="card-name">天龙寺</div><div class="card-desc">曹源池庭园以借景岚山著称，池泉回游，倒影山色，禅意深远。</div><div class="card-foot"><span class="card-price">¥500</span><span class="card-sub">世界遗产</span></div></div>
+      </div>
+      <div class="card" data-lat="35.1163" data-lng="135.7602" data-name="Kifune Shrine Kyoto">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Kibune_Shrine_lanterns.jpg/800px-Kibune_Shrine_lanterns.jpg" alt="贵船神社" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>⛩️</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">神社 · 贵船</div><div class="card-name">贵船神社</div><div class="card-desc">水神神社，水占签放入溪流字迹浮现。5/2起夜间ライトアップ，18:00灯笼点亮。</div><div class="card-foot"><span class="card-price">免费</span><span class="card-sub">结缘著名</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 3 -->
+<section class="section" id="day3">
+  <div class="section-inner">
+    <div class="day-header reveal">
+      <div class="day-num">03</div>
+      <div class="day-meta">
+        <div class="day-date">5月3日 · 星期日 · 建议购买巴士一日券¥600</div>
+        <h2 class="day-title">宇治世遗 · 金阁 · 龙安寺 · 桂离宫 · 鶴清纳凉床</h2>
+        <div class="day-theme">行李策略：DoubleTree退房→寄存Holiday Inn→全天轻装→鶴清后正式入住</div>
+      </div>
+    </div>
+    <div style="background:rgba(184,50,50,.06);border-left:2px solid var(--vermillion);padding:1rem 1.4rem;margin-bottom:2rem;font-size:.8rem;line-height:1.7" class="reveal">
+      ⚠️ <strong>今日时间链极紧：龙安寺14:15须准时出发</strong> → 四条大宫 → 阪急桂站 → 步行20分 → 桂离宫15:00登记 · 金阁寺·龙安寺各游览40分钟须严格控时
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item"><div class="tl-time">06:50</div><div class="tl-body"><div class="tl-tag">退房·寄存</div><div class="tl-name">🧳 DoubleTree退房 → Holiday Inn寄存行李</div><div class="tl-desc">地铁京都站→五条2分钟 · 说明：「Check-in is today, can I store my luggage first?」<div class="tl-warn">⚠ 出发前一天致电确认</div></div></div></div>
+      <div class="tl-item hl"><div class="tl-time">08:30</div><div class="tl-body"><div class="tl-tag">世界遗产 · 开门即入</div><div class="tl-name">🌸 平等院凤凰堂</div><div class="tl-desc">10日圆硬币背面图案 · 凤翔馆铜制凤凰原件 🎟️ 庭园¥600+殿内¥300<div class="tl-warn">⚠ 8:30开门即入·黄金周下午排队超2小时</div></div></div></div>
+      <div class="tl-item"><div class="tl-time">10:00</div><div class="tl-body"><div class="tl-tag">世界遗产</div><div class="tl-name">⛩️ 宇治上神社</div><div class="tl-desc">日本现存最古老神社建筑（1060年）· 世界遗产 · 免费<span class="chip">步行10分钟</span></div></div></div>
+      <div class="tl-item"><div class="tl-time">10:35</div><div class="tl-body"><div class="tl-tag">午餐 · 宇治采购</div><div class="tl-name">🍱 中村藤吉 平等院店（须11:20前离开）</div><div class="tl-desc">茶そば¥1,400 + 生茶ゼリィ¥900 · 10:00开店即入 · 午餐同时可浏览表参道茶器小铺<div class="tl-warn">⚠ 11:20须离开宇治·赶JR返京都站</div></div></div></div>
+      <div class="tl-item"><div class="tl-time">12:30</div><div class="tl-body"><div class="tl-tag">世界遗产</div><div class="tl-name">✨ 金阁寺（鹿苑寺）</div><div class="tl-desc">金箔外壁倒映镜湖池 🎟️¥500 ⏱️ 严格40分钟<span class="chip">JR宇治→京都站17分→地铁北大路→楽洛109→金阁寺道 约45分钟</span></div></div></div>
+      <div class="tl-item"><div class="tl-time">13:35</div><div class="tl-body"><div class="tl-tag">世界遗产</div><div class="tl-name">🪨 龙安寺</div><div class="tl-desc">枯山水石庭·15块石任何角度均有一块被遮蔽 🎟️¥600 ⏱️ 严格40分钟<div class="tl-warn">⚠ 14:15须准时出发！此为桂离宫15:00登记的硬约束</div><span class="chip">候车10分+乘车25分→四条大宫→阪急12分→桂站→步行20分→15:00登记</span></div></div></div>
+      <div class="tl-item hl"><div class="tl-time">15:20</div><div class="tl-body"><div class="tl-tag">已预约 · 皇家秘苑</div><div class="tl-name">🏛️ 桂离宫 · No.605423418</div><div class="tl-desc">须带双人护照原件 + 许可证号 605423418 · 日本最高建筑美学典范 · 书院造与数寄屋造融合 🎟️¥1,000/人<br>松琴亭·月波楼·笑意轩·园林步道·约80分钟全程导览<div class="tl-warn">⚠ 须全程随导览员·不可单独行动 · 下载宫内厅App备用</div></div></div></div>
+      <div class="tl-item"><div class="tl-time">17:20</div><div class="tl-body"><div class="tl-tag">漫步</div><div class="tl-name">🚶 鸭川河岸 → 先斗町</div><div class="tl-desc">阪急桂→四条大宫12分→步行至鸭川约15分→沿先斗町南下约1km至鶴清 · 傍晚光线最美 · 灯笼陆续亮起</div></div></div>
+      <div class="tl-item hl"><div class="tl-time">19:00</div><div class="tl-body"><div class="tl-tag">已预约晚餐</div><div class="tl-name">🍽️ 京料理 鶴清（纳凉床）· 预约ID 574941</div><div class="tl-desc">主厨推荐京怀石¥16,000/人 · 纳凉床 · 鸭川上方高台露台 · 整洁着装（避免运动装）</div></div></div>
+      <div class="tl-item"><div class="tl-time">21:00</div><div class="tl-body"><div class="tl-tag">入住</div><div class="tl-name">🏨 Holiday Inn 京都五条 正式入住</div><div class="tl-desc">取回寄存行李 · 步行约10分钟</div></div></div>
+    </div>
+    <div class="cards reveal">
+      <div class="card" data-lat="34.8894" data-lng="135.8077" data-name="Byodoin Phoenix Hall Uji Kyoto">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Byodo-in_in_Uji.jpg/800px-Byodo-in_in_Uji.jpg" alt="平等院" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>🌸</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">世界遗产 · 宇治市</div><div class="card-name">平等院凤凰堂</div><div class="card-desc">10日圆硬币背面图案，平安贵族极乐净土的具象化，庄严优美。</div><div class="card-foot"><span class="card-price">¥600+¥300</span><span class="card-sub">世界遗产</span></div></div>
+      </div>
+      <div class="card" data-lat="34.8905" data-lng="135.8097" data-name="Ujigami Shrine World Heritage Uji">
+        <div class="card-img-wrap"><div class="card-ph">⛩️</div></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">世界遗产 · 宇治市</div><div class="card-name">宇治上神社</div><div class="card-desc">日本现存最古老神社建筑（1060年），世界遗产，步行5分钟距平等院。</div><div class="card-foot"><span class="card-price">免费</span><span class="card-sub">世界遗产</span></div></div>
+      </div>
+      <div class="card" data-lat="35.0394" data-lng="135.7292" data-name="Kinkaku-ji Golden Pavilion Kyoto">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Kinkakuji-in-Kyoto-2010-wideshot.jpg/800px-Kinkakuji-in-Kyoto-2010-wideshot.jpg" alt="金阁寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>✨</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">世界遗产 · 北区</div><div class="card-name">金阁寺（鹿苑寺）</div><div class="card-desc">金箔外壁倒映镜湖池，三层楼阁各呈不同建筑风格，京都最具代表性地标。</div><div class="card-foot"><span class="card-price">¥500</span><span class="card-sub">世界遗产</span></div></div>
+      </div>
+      <div class="card" data-lat="35.0346" data-lng="135.7183" data-name="Ryoan-ji Stone Garden Kyoto">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Ryoan-ji_Kyoto_Zen_garden_adjusted.jpg/800px-Ryoan-ji_Kyoto_Zen_garden_adjusted.jpg" alt="龙安寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>🪨</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">世界遗产 · 右京区</div><div class="card-name">龙安寺</div><div class="card-desc">15块石任何角度总有一块被遮蔽，枯山水石庭的哲学，令人沉思。</div><div class="card-foot"><span class="card-price">¥600</span><span class="card-sub">世界遗产</span></div></div>
+      </div>
+      <div class="card" data-lat="34.9949" data-lng="135.6775" data-name="Katsura Imperial Villa Kyoto">
+        <div class="card-img-wrap"><div class="card-ph">🏛️</div></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">世界遗产 · 已预约</div><div class="card-name">桂离宫</div><div class="card-desc">日本最高建筑美学典范，书院造与数寄屋造融合，皇室庭园精华。须护照+许可证号605423418。</div><div class="card-foot"><span class="card-price">¥1,000 ✅</span><span class="card-sub">世界遗产</span></div></div>
+      </div>
+      <div class="card" data-lat="35.0038" data-lng="135.7673" data-name="Kyoryori Tsuruse Kawadoko Kyoto">
+        <div class="card-img-wrap"><div class="card-ph">🌊</div></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">已预约餐厅 · 下京区</div><div class="card-name">京料理 鶴清</div><div class="card-desc">纳凉床悬于鸭川上方，京都夏季传统，微风溪声伴随高端京怀石料理。</div><div class="card-foot"><span class="card-price">19:00 ✅</span><span class="card-sub">¥35,200已付</span></div></div>
+      </div>
+    </div>
+
+    <!-- Day3 Craft -->
+    <div class="craft-section reveal">
+      <div class="craft-heading"><span class="craft-icon">🛍️</span><div><div class="craft-title-text">Day 3 宇治匠人采购 · 平等院表参道（10:35–11:20）</div><div class="craft-subtitle">午餐前后随走随看，时间窗口约45分钟</div></div></div>
+      <div class="craft-grid">
+        <div class="craft-card" data-lat="34.8898" data-lng="135.8083" data-name="Uji Omotesando Tea Ceramics Shops Uji Kyoto">
+          <div class="craft-card-tag">宇治茶器 · 急须</div>
+          <div class="craft-card-name">平等院表参道 茶器小铺群</div>
+          <div class="craft-card-desc">多家专营宇治烧茶器的小铺，急须·盖碗·茶托均为当地窯元出品。宝瓶（无把急须，宇治茶专用）为特色，价格比京都市区合理。</div>
+          <div class="craft-card-foot"><span class="craft-price">急须¥3,000~</span><span class="craft-map">📍 地图</span></div>
+        </div>
+        <div class="craft-card" data-lat="34.8895" data-lng="135.8079" data-name="Nakamura Tokichi Byodoin Store Uji">
+          <div class="craft-card-tag">宇治茶 · 茶品精品</div>
+          <div class="craft-card-name">中村藤吉 平等院店</div>
+          <div class="craft-card-desc">用餐后店内有自家品牌茶罐·茶巾·茶包等精品，桐箱包装本身即是工艺品，适合作为高档伴手礼。</div>
+          <div class="craft-card-foot"><span class="craft-price">¥1,500~</span><span class="craft-map">📍 地图</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 4 -->
+<section class="section section--alt" id="day4">
+  <div class="section-inner">
+    <div class="day-header reveal">
+      <div class="day-num">04</div>
+      <div class="day-meta">
+        <div class="day-date">5月4日 · 星期一（みどりの日）</div>
+        <h2 class="day-title">奈良世界遗产完整一日 · 祇园（可选）</h2>
+        <div class="day-theme">全程近铁+步行·交通风险最低·奈良博物館5/4照常开放✅</div>
+      </div>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item"><div class="tl-time">07:15</div><div class="tl-body"><div class="tl-tag">出发</div><div class="tl-name">🚃 近铁特急：京都站 → 近铁奈良站</div><div class="tl-desc">¥1,040（含特急券） · 35分钟（固定）<span class="chip">地铁五条→京都站 2分钟</span></div></div></div>
+      <div class="tl-item"><div class="tl-time">08:00</div><div class="tl-body"><div class="tl-tag">世界遗产</div><div class="tl-name">🏯 兴福寺</div><div class="tl-desc">国宝馆阿修罗像（三面六臂·日本最美佛像）· 五重塔50.1m 🎟️¥700+¥300<span class="chip">步行5分钟</span></div></div></div>
+      <div class="tl-item"><div class="tl-time">09:05</div><div class="tl-body"><div class="tl-tag">自然</div><div class="tl-name">🦌 奈良公园 · 鹿群互动</div><div class="tl-desc">鹿煎饼¥200 · 自由漫步 · 前往博物馆途中</div></div></div>
+      <div class="tl-item"><div class="tl-time">10:00</div><div class="tl-body"><div class="tl-tag">博物馆</div><div class="tl-name">🏛️ 奈良国立博物馆</div><div class="tl-desc">佛像馆（1894年重要文化财建筑）· 飞鸟至镰仓佛教艺术 🎟️¥700</div></div></div>
+      <div class="tl-item"><div class="tl-time">12:00</div><div class="tl-body"><div class="tl-tag">午餐</div><div class="tl-name">🍱 ゐざさ茶屋 東大寺門前夢風ひろば2F</div><div class="tl-desc">柿叶寿司+天妇罗+三轮素面セット¥1,850 · 窗口正对大仏殿 · 11:30入场可避高峰</div></div></div>
+      <div class="tl-item"><div class="tl-time">13:00</div><div class="tl-body"><div class="tl-tag">世界遗产 · 重点</div><div class="tl-name">⛩️ 东大寺</div><div class="tl-desc">南大门金刚力士像8.4m · 大仏殿（世界最大木造建筑）· 15米卢舍那佛 🎟️¥800 · 柱洞体验</div></div></div>
+      <div class="tl-item"><div class="tl-time">14:45</div><div class="tl-body"><div class="tl-tag">世界遗产</div><div class="tl-name">🏯 二月堂 · 法华堂</div><div class="tl-desc">步行上山15分钟 · 俯瞰奈良盆地全景 · 免费</div></div></div>
+      <div class="tl-item"><div class="tl-time">15:25</div><div class="tl-body"><div class="tl-tag">世界遗产</div><div class="tl-name">⛩️ 春日大社</div><div class="tl-desc">1780盏石灯笼参道 · 原始森林 · 朱红本殿 🎟️¥500</div></div></div>
+      <div class="tl-item"><div class="tl-time">16:30</div><div class="tl-body"><div class="tl-tag">历史街区 · 采购</div><div class="tl-name">🏘️ 奈良町 · 工艺采购（详见指南）</div><div class="tl-desc">江户时代町家建筑群 · なら工藝館（免费）· 中川政七商店等<span class="chip">近铁奈良→京都站 35分钟（固定）</span></div></div></div>
+      <div class="tl-item hl"><div class="tl-time">18:30</div><div class="tl-body"><div class="tl-tag">晚餐 · 三选一</div><div class="tl-name">🍽️ 祇园·先斗町晚餐（须提前预约）</div><div class="tl-desc">A. 豆八（おばんざい¥4,400·食べログ英文预约）/ B. すいしん（京料理¥4,950·ぐるなび）/ C. 烹祥庵（纳凉床·My Concierge Japan）</div></div></div>
+      <div class="tl-item"><div class="tl-time">19:00</div><div class="tl-body"><div class="tl-tag">可选</div><div class="tl-name">🎭 祇园角（体力充裕则去）</div><div class="tl-desc">18:00/19:00两场 · 舞妓京舞·茶道·华道·雅乐·狂言·文乐 · ¥5,500/人 · 提前45分钟排队购票</div></div></div>
+    </div>
+    <div class="cards reveal">
+      <div class="card" data-lat="34.6816" data-lng="135.8282" data-name="Kofuku-ji Temple Nara">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Kofukuji_Pagoda_Nara_Japan.jpg/800px-Kofukuji_Pagoda_Nara_Japan.jpg" alt="兴福寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>🏯</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">世界遗产 · 奈良市</div><div class="card-name">兴福寺</div><div class="card-desc">国宝馆内阿修罗像三面六臂，被誉为日本最美佛像。五重塔高50.1米。</div><div class="card-foot"><span class="card-price">¥700+¥300</span><span class="card-sub">世界遗产</span></div></div>
+      </div>
+      <div class="card" data-lat="34.6887" data-lng="135.8397" data-name="Todai-ji Temple Great Buddha Nara">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Todaiji_Cathedral.jpg/800px-Todaiji_Cathedral.jpg" alt="东大寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>⛩️</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">世界遗产 · 奈良市</div><div class="card-name">东大寺</div><div class="card-desc">世界最大木造建筑，内供15米高卢舍那佛。南大门金刚力士像震撼人心。</div><div class="card-foot"><span class="card-price">¥800</span><span class="card-sub">世界遗产</span></div></div>
+      </div>
+      <div class="card" data-lat="34.6815" data-lng="135.8448" data-name="Kasuga Taisha Grand Shrine Nara">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Kasugataisha_Shrine.jpg/800px-Kasugataisha_Shrine.jpg" alt="春日大社" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>⛩️</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">世界遗产 · 奈良市</div><div class="card-name">春日大社</div><div class="card-desc">1780盏石灯笼沿参道排列，原始森林夹道，朱红本殿庄严肃穆。</div><div class="card-foot"><span class="card-price">¥500</span><span class="card-sub">世界遗产</span></div></div>
+      </div>
+      <div class="card" data-lat="34.6740" data-lng="135.8325" data-name="Naramachi Koshi no Ie Historic District Nara">
+        <div class="card-img-wrap"><div class="card-ph">🏘️</div></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">历史街区 · 采购</div><div class="card-name">奈良町 · 格子之家</div><div class="card-desc">江户时代町家建筑群，なら工藝館·中川政七商店等匠人工艺集中地。</div><div class="card-foot"><span class="card-price">免费</span><span class="card-sub">工艺采购</span></div></div>
+      </div>
+      <div class="card" data-lat="35.0032" data-lng="135.7750" data-name="Gion Corner Traditional Arts Kyoto">
+        <div class="card-img-wrap"><div class="card-ph">🎭</div></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">传统艺能 · 可选</div><div class="card-name">祇园角</div><div class="card-desc">约1小时浓缩7种传统艺能：舞妓京舞·茶道·华道·箏曲·雅乐·狂言·文乐。</div><div class="card-foot"><span class="card-price">¥5,500/人</span><span class="card-sub">现场购票</span></div></div>
+      </div>
+    </div>
+
+    <!-- Day4 Craft -->
+    <div class="craft-section reveal">
+      <div class="craft-heading"><span class="craft-icon">🛍️</span><div><div class="craft-title-text">Day 4 奈良匠人工艺采购 · 奈良町（16:30–17:00）</div><div class="craft-subtitle">30分钟窗口，以なら工藝館为核心，建议出发前确定目标品类</div></div></div>
+      <div class="craft-grid">
+        <div class="craft-card" data-lat="34.6742" data-lng="135.8327" data-name="Nara Crafts Museum Naramachi Nara">
+          <div class="craft-card-tag">综合工艺 · 免费展示 ⭐ 最推荐</div>
+          <div class="craft-card-name">なら工藝館（奈良工艺馆）</div>
+          <div class="craft-card-desc">展示奈良一刀彫·赤膚焼·奈良団扇等70余件作品，部分可直接购买。同时展示制作工序，直观理解匠人精神。免费入场。</div>
+          <div class="craft-card-foot"><span class="craft-price">免费入场</span><span class="craft-map">📍 地图</span></div>
+        </div>
+        <div class="craft-card" data-lat="34.6852" data-lng="135.8290" data-name="Nakagawa Masashichi Shoten Nara Main Store">
+          <div class="craft-card-tag">奈良晒 · 蚊帳布製品</div>
+          <div class="craft-card-name">中川政七商店 奈良本店</div>
+          <div class="craft-card-desc">享保元年（1716年）创业，以高级手织麻「奈良晒」起家。花ふきん·蚊帳布制品·奈良鹿主题和杂货。近铁奈良站步行约5分钟。</div>
+          <div class="craft-card-foot"><span class="craft-price">¥500~</span><span class="craft-map">📍 地图</span></div>
+        </div>
+        <div class="craft-card" data-lat="34.6745" data-lng="135.8320" data-name="Ikeda Ganko-do Nara Uchiwa Fan Naramachi">
+          <div class="craft-card-tag">奈良団扇 · 160年老铺</div>
+          <div class="craft-card-name">池田含香堂</div>
+          <div class="craft-card-desc">制作奈良団扇与奈良扇子的唯一老铺，手工透雕天平纹样·奈良风物，优雅逸品，夏季生活道具中的艺术品。</div>
+          <div class="craft-card-foot"><span class="craft-price">¥2,200~</span><span class="craft-map">📍 地图</span></div>
+        </div>
+        <div class="craft-card" data-lat="34.6748" data-lng="135.8315" data-name="Kinkoen Traditional Nara Ink Stick Naramachi">
+          <div class="craft-card-tag">奈良墨 · 飞鸟时代发祥</div>
+          <div class="craft-card-name">錦光園</div>
+          <div class="craft-card-desc">日本九成的墨仍产自奈良，全国制墨作坊不足10家。墨锭本身即是工艺品，纹样精美，松烟香气独特。握墨适合携带。</div>
+          <div class="craft-card-foot"><span class="craft-price">¥1,600~</span><span class="craft-map">📍 地图</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day4 Dinner -->
+    <div class="meal-block reveal" style="margin-top:2.5rem">
+      <div class="meal-header"><span class="meal-label">Day4 晚餐 三选一</span><span class="meal-name">祇园·先斗町 · 须提前预约</span></div>
+      <div class="meal-grid">
+        <div><div class="meal-row"><span class="meal-key">A · 推荐</span><span class="meal-val">豆八（おばんざい¥4,400）</span></div><div class="meal-row"><span class="meal-key">预约</span><span class="meal-val">tabelog.com英文版</span></div></div>
+        <div><div class="meal-row"><span class="meal-key">B</span><span class="meal-val">すいしん本店（京料理¥4,950）</span></div><div class="meal-row"><span class="meal-key">预约</span><span class="meal-val">r.gnavi.co.jp/k844406</span></div></div>
+        <div><div class="meal-row"><span class="meal-key">C · 纳凉床</span><span class="meal-val">烹祥庵（¥8,000+）</span></div><div class="meal-row"><span class="meal-key">预约</span><span class="meal-val">myconciergejapan.com</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 5 -->
+<section class="section" id="day5">
+  <div class="section-inner">
+    <div class="day-header reveal">
+      <div class="day-num">05</div>
+      <div class="day-meta">
+        <div class="day-date">5月5日 · 星期二 · 建议购买巴士一日券¥600</div>
+        <h2 class="day-title">东山北收官 · 南禅寺 · 哲学之道 · 银阁寺 · 返港</h2>
+        <div class="day-theme">硬约束：10:00离开银阁寺 · 12:00 HARUKA出发</div>
+      </div>
+    </div>
+    <div style="background:rgba(184,50,50,.06);border-left:2px solid var(--vermillion);padding:1rem 1.4rem;margin-bottom:2rem;font-size:.8rem;line-height:1.7" class="reveal">
+      ⚠️ 银阁寺→京都站含退房整理实测约70分钟 · <strong>10:00须准时离开银阁寺</strong> · 12:00 HARUKA发车→13:15抵达关西机场→15:00 HX615起飞
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item"><div class="tl-time">07:15</div><div class="tl-body"><div class="tl-tag">早游</div><div class="tl-name">⛩️ 南禅寺 · 水路阁</div><div class="tl-desc">水路阁（明治古砖引水渠·免费·早晨人少气氛最佳）· 方丈庭园¥600<span class="chip">地铁五条→蹴上 约15分钟（固定）→步行5分钟</span></div></div></div>
+      <div class="tl-item"><div class="tl-time">07:55</div><div class="tl-body"><div class="tl-tag">漫步</div><div class="tl-name">🚶 哲学之道</div><div class="tl-desc">南→北漫步2km · 沿琵琶湖疏水渠 · 5月新绿盎然 · 沿途咖啡馆·陶艺小店 · 免费</div></div></div>
+      <div class="tl-item"><div class="tl-time">09:05</div><div class="tl-body"><div class="tl-tag">世界遗产</div><div class="tl-name">🌙 银阁寺（慈照寺）</div><div class="tl-desc">银沙滩·向月台·侘寂苔庭·室町文化代表 🎟️¥500</div></div></div>
+      <div class="tl-item hl"><div class="tl-time">10:00</div><div class="tl-body"><div class="tl-tag">⚠️ 硬约束</div><div class="tl-name">须准时离开银阁寺</div><div class="tl-desc">市巴士银阁寺前→今出川25分→地铁8分→五条→Holiday Inn退房约20分→地铁2分→京都站 共约70分钟</div></div></div>
+      <div class="tl-item"><div class="tl-time">11:05</div><div class="tl-body"><div class="tl-tag">购物</div><div class="tl-name">🛍️ 京都站伊势丹B1–2F</div><div class="tl-desc">生八桥·抹茶点心·西京漬·调味酱·土产 · 至11:55</div></div></div>
+      <div class="tl-item hl"><div class="tl-time">12:00</div><div class="tl-body"><div class="tl-tag">⚠️ 硬约束</div><div class="tl-name">🚃 HARUKA出发 · WEST QR</div><div class="tl-desc">75分钟（固定）→ 13:15关西机场T1 · 黄金周安检预留75分钟 → 15:00 HX615起飞 → 18:25抵达香港T1</div></div></div>
+    </div>
+    <div class="cards reveal">
+      <div class="card" data-lat="35.0115" data-lng="135.7930" data-name="Nanzen-ji Temple Suirokaku Kyoto">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Nanzenji_suirokaku.JPG/800px-Nanzenji_suirokaku.JPG" alt="南禅寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>⛩️</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">名刹 · 左京区</div><div class="card-name">南禅寺 · 水路阁</div><div class="card-desc">明治古砖引水渠嵌入千年古寺，工业遗迹与禅意的视觉反差独特。</div><div class="card-foot"><span class="card-price">方丈¥600</span><span class="card-sub">临济宗大本山</span></div></div>
+      </div>
+      <div class="card" data-lat="35.0224" data-lng="135.7956" data-name="Philosophers Walk Tetsugaku no Michi Kyoto">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Philosophers_Walk_Kyoto.jpg/800px-Philosophers_Walk_Kyoto.jpg" alt="哲学之道" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>🚶</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">散步道 · 左京区</div><div class="card-name">哲学之道</div><div class="card-desc">沿琵琶湖疏水渠2km石板小径，哲学家西田几多郎常在此冥思。5月新绿盎然。</div><div class="card-foot"><span class="card-price">免费</span><span class="card-sub">5月新绿最美</span></div></div>
+      </div>
+      <div class="card" data-lat="35.0271" data-lng="135.7985" data-name="Ginkaku-ji Silver Pavilion Kyoto">
+        <div class="card-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Ginkaku-ji_temple.jpg/800px-Ginkaku-ji_temple.jpg" alt="银阁寺" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'card-ph\'>🌙</div>'"></div>
+        <div class="card-overlay"><span class="map-btn">📍 地图导航</span></div>
+        <div class="card-body"><div class="card-tag">世界遗产 · 左京区</div><div class="card-name">银阁寺（慈照寺）</div><div class="card-desc">侘寂美学极致，银沙滩与向月台的砂纹庭园，苔庭幽深，室町文化代表。</div><div class="card-foot"><span class="card-price">¥500</span><span class="card-sub">世界遗产</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICAL -->
+<section class="section section--dark" id="practical">
+  <div class="section-inner">
     <div class="reveal">
-      <div class="section-label">Essential Info</div>
+      <p class="section-eyebrow">Essential Information</p>
       <h2 class="section-title">实用信息</h2>
     </div>
     <div class="info-grid reveal">
@@ -1843,121 +883,132 @@ footer strong {
         <div class="info-card-icon">🏨</div>
         <div class="info-card-title">酒店信息</div>
         <ul class="info-list">
-          <li><span>DoubleTree 京都站</span><span class="val">5/1–5/3</span></li>
-          <li><span>入住 / 退房</span><span class="val">15:00 / 12:00</span></li>
-          <li><span>Holiday Inn 五条</span><span class="val">5/3–5/5</span></li>
-          <li><span>入住 / 退房</span><span class="val">15:00 / 11:00</span></li>
+          <li><span>DoubleTree by Hilton 京都站</span><span class="info-val">5/1–5/3</span></li>
+          <li><span>入住/退房</span><span class="info-val">15:00 / 12:00</span></li>
+          <li><span>Holiday Inn 京都五条</span><span class="info-val">5/3–5/5</span></li>
+          <li><span>入住/退房</span><span class="info-val">15:00 / 11:00</span></li>
+          <li><span>5/3行李寄存策略</span><span class="info-val">早上寄存·晚上入住</span></li>
         </ul>
       </div>
       <div class="info-card">
         <div class="info-card-icon">🎟️</div>
-        <div class="info-card-title">门票预算（2人合计）</div>
+        <div class="info-card-title">须带证件（关键）</div>
         <ul class="info-list">
-          <li><span>景点门票合计</span><span class="val">约¥24,000–28,000</span></li>
-          <li><span>贵船川床晚餐</span><span class="val">约¥22,000–30,000</span></li>
-          <li><span>祇园角演出</span><span class="val">¥11,000</span></li>
-          <li><span>市内交通</span><span class="val">约¥8,000–10,000</span></li>
+          <li><span>西芳寺 5/2 10:30</span><span class="info-val">护照+QR码</span></li>
+          <li><span>桂离宫 5/3 15:20</span><span class="info-val">护照+605423418</span></li>
+          <li><span>桂离宫接待开始</span><span class="info-val">15:00（勿迟）</span></li>
+          <li><span>宫内厅语音导览App</span><span class="info-val">出发前下载</span></li>
         </ul>
       </div>
       <div class="info-card">
-        <div class="info-card-icon">🚃</div>
+        <div class="info-card-icon">💳</div>
+        <div class="info-card-title">交通卡</div>
+        <ul class="info-list">
+          <li><span>Suica / ICOCA</span><span class="info-val">覆盖全程所有路段</span></li>
+          <li><span>建议余额</span><span class="info-val">¥5,000以上</span></li>
+          <li><span>巴士一日券¥600</span><span class="info-val">Day1·3·5购买</span></li>
+          <li><span>近铁特急券</span><span class="info-val">¥520/人（Day4）</span></li>
+          <li><span>HARUKA</span><span class="info-val">WEST QR ✅</span></li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">⏰</div>
         <div class="info-card-title">关键时间节点</div>
         <ul class="info-list">
-          <li><span>5/1 HX616 抵达关西</span><span class="val">07:55</span></li>
-          <li><span>5/2 西芳寺参拜</span><span class="val">10:30 ⚠</span></li>
-          <li><span>5/3 平等院开门</span><span class="val">08:30 ⚠</span></li>
-          <li><span>5/5 HARUKA出发</span><span class="val">12:00 ⚠</span></li>
-          <li><span>5/5 HX615 起飞</span><span class="val">15:00</span></li>
-        </ul>
-      </div>
-      <div class="info-card">
-        <div class="info-card-icon">📝</div>
-        <div class="info-card-title">重要提醒</div>
-        <ul class="info-list">
-          <li><span>西芳寺须携带护照</span><span class="val">双人原件</span></li>
-          <li><span>西芳寺QR码</span><span class="val">邮件截图备用</span></li>
-          <li><span>黄金周人流</span><span class="val">早出发</span></li>
-          <li><span>贵船末班车</span><span class="val">约22:00</span></li>
+          <li><span>5/1 HX616抵达关西</span><span class="info-val">07:55</span></li>
+          <li><span>5/2 西芳寺参拜</span><span class="info-val">10:30 ⚠</span></li>
+          <li><span>5/3 平等院开门</span><span class="info-val">08:30 ⚠</span></li>
+          <li><span>5/3 龙安寺出发</span><span class="info-val">14:15 ⚠</span></li>
+          <li><span>5/3 桂离宫登记</span><span class="info-val">15:00 ⚠</span></li>
+          <li><span>5/5 离开银阁寺</span><span class="info-val">10:00 ⚠</span></li>
+          <li><span>5/5 HARUKA出发</span><span class="info-val">12:00 ⚠</span></li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- TODO -->
+<section class="section section--alt" id="todo">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-eyebrow">Action Required</p>
+      <h2 class="section-title">紧迫待办清单</h2>
+    </div>
+    <div class="reveal">
+      <div class="todo-item"><div class="todo-dot red"></div><div class="todo-text"><div class="todo-label">Day4晚餐预约（三选一）</div><div class="todo-link">A·豆八: tabelog.com/en/kyoto/A2601/A260201/26021180/ · B·すいしん: r.gnavi.co.jp/k844406/ · C·烹祥庵: myconciergejapan.com/zh-hans/</div></div><div class="todo-dl">今天内</div></div>
+      <div class="todo-item"><div class="todo-dot orange"></div><div class="todo-text"><div class="todo-label">Holiday Inn致电确认行李提前寄存（5/3早）</div><div class="todo-link">预订确认信中有电话</div></div><div class="todo-dl">出发前一天</div></div>
+      <div class="todo-item"><div class="todo-dot orange"></div><div class="todo-text"><div class="todo-label">叡山电铁きらら时刻表确认（5/2·17:30班次）</div><div class="todo-link">eizandensha.co.jp/information/kirara/</div></div><div class="todo-dl">出发前</div></div>
+      <div class="todo-item"><div class="todo-dot orange"></div><div class="todo-text"><div class="todo-label">下载宫内厅语音导览App（桂离宫用）</div><div class="todo-link">kunaicho.go.jp/en/visit/guide/app.html</div></div><div class="todo-dl">出发前</div></div>
+      <div class="todo-item"><div class="todo-dot yellow"></div><div class="todo-text"><div class="todo-label">近铁特急券（Day4·¥520/人）</div><div class="todo-link">近铁京都站窗口当日购买</div></div><div class="todo-dl">当日</div></div>
+      <div class="todo-item"><div class="todo-dot yellow"></div><div class="todo-text"><div class="todo-label">祇园角现场购票（Day4·可选·体力充裕则去）</div><div class="todo-link">ookinizaidan.com/gion_coner/payment/ · 18:00或19:00场次</div></div><div class="todo-dl">当日</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <strong>京都之旅 · 2026年5月</strong>
-  ZHENG TENG / Darren ZHENG &nbsp;·&nbsp; 2人同行 &nbsp;·&nbsp; 5天5夜
-  <br><br>
-  <span style="opacity:0.4;font-size:0.65rem;letter-spacing:0.2em">
-    点击各景点卡片可在地图中导航 &nbsp;·&nbsp; 祝旅途愉快
-  </span>
+  <strong>京都·奈良·宇治 · 2026年5月</strong>
+  ZHENG TENG / Darren ZHENG &nbsp;·&nbsp; 2人同行 &nbsp;·&nbsp; 5天5夜<br><br>
+  <span style="opacity:.5;font-size:.62rem">点击景点·餐厅·工艺品卡片可在地图中导航 · 坐标经过GPS精确校验 · 祝旅途愉快</span>
 </footer>
 
 <script>
+// ── MAP NAVIGATION (精确GPS坐标) ──
+function openMap(lat, lng, name) {
+  const ua = navigator.userAgent;
+  const encoded = encodeURIComponent(name);
+  if (/iPad|iPhone|iPod/.test(ua)) {
+    window.location.href = `maps://?ll=${lat},${lng}&q=${encoded}`;
+  } else if (/Android/.test(ua)) {
+    window.location.href = `geo:${lat},${lng}?q=${lat},${lng}(${encoded})`;
+  } else {
+    window.open(`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`, '_blank');
+  }
+}
+
+// Spot cards
+document.querySelectorAll('.card[data-lat]').forEach(card => {
+  card.addEventListener('click', () => {
+    openMap(card.dataset.lat, card.dataset.lng, card.dataset.name);
+  });
+});
+
+// Craft cards
+document.querySelectorAll('.craft-card[data-lat]').forEach(card => {
+  card.addEventListener('click', () => {
+    openMap(card.dataset.lat, card.dataset.lng, card.dataset.name);
+  });
+});
+
 // Scroll reveal
-const observer = new IntersectionObserver((entries) => {
+const revealObs = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, entry.target.dataset.delay || 0);
-      observer.unobserve(entry.target);
+      setTimeout(() => entry.target.classList.add('visible'), (entry.target.dataset.delay || 0));
+      revealObs.unobserve(entry.target);
     }
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.07, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.reveal').forEach((el, i) => {
-  el.style.transitionDelay = `${(i % 3) * 80}ms`;
-  observer.observe(el);
+  el.style.transitionDelay = `${(i % 4) * 60}ms`;
+  revealObs.observe(el);
 });
 
-// Map link detection — use Apple Maps on iOS, Google Maps otherwise
-// 地图导航：使用精确GPS坐标，确保跳转到日本正确地点
-document.querySelectorAll('a[data-lat]').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    const lat = link.dataset.lat;
-    const lng = link.dataset.lng;
-    const name = encodeURIComponent(link.dataset.name);
-    const ua = navigator.userAgent;
-    const isIOS = /iPad|iPhone|iPod/.test(ua);
-    const isAndroid = /Android/.test(ua);
-
-    if (isIOS) {
-      // Apple Maps：用坐标+名称，精准定位
-      window.location.href = `maps://?ll=${lat},${lng}&q=${name}`;
-    } else if (isAndroid) {
-      // Google Maps：用坐标+名称
-      window.location.href = `geo:${lat},${lng}?q=${lat},${lng}(${name})`;
-    } else {
-      // 桌面：打开Google Maps坐标链接
-      window.open(`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`, '_blank');
-    }
-  });
-});
-
-// Nav active state
+// Nav active highlight
 const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-
-const navObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.id;
-      navLinks.forEach(link => {
-        link.style.background = '';
-        link.style.color = '';
-        if (link.getAttribute('href') === `#${id}`) {
-          link.style.background = 'var(--ink)';
-          link.style.color = 'var(--washi)';
-        }
-      });
+const links = document.querySelectorAll('.nav-links a');
+const navObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const match = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+      if (match) match.classList.add('active');
     }
   });
-}, { threshold: 0.3 });
-
-sections.forEach(s => navObserver.observe(s));
+}, { threshold: 0.35 });
+sections.forEach(s => navObs.observe(s));
 </script>
 </body>
 </html>
